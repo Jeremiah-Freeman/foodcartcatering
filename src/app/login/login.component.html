@@ -21,6 +21,11 @@
     <input #newEmail value="">
     <label>password:</label>
     <input #newPassword value="">
-    <button class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value)">Signup with email</button>
+    <select #newAccountType>
+      <option value="c">Customer</option>
+      <option value="f">Food Cart</option>
+      <option value="d">Deliverer</option>
+    </select>
+    <button class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">Signup with email</button>
   </div>
 </div>
