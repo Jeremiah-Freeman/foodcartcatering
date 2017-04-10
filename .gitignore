@@ -9,6 +9,9 @@
 /node_modules
 /bower_components
 
+# api-keys
+/api-keys
+
 # IDEs and editors
 /.idea
 .project

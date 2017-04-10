@@ -1,9 +1,9 @@
 {
   "name": "foodcartcatering",
-  "description": "",
+  "description": "Ap connecting businesses that want to order catered food with food trucks.",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/dmqpdx/foodcartcatering",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -13,5 +13,15 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7"
-  }
+  },
+  "keywords": [
+    "Angular",
+    "2",
+    "Google",
+    "Maps",
+    "Api",
+    "Food",
+    "Catering"
+  ],
+  "private": true
 }
