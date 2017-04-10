@@ -1,3 +1,9 @@
-<p>
-  order-requests works!
-</p>
+<!-- Food cart story component that holds tiles of orders needing to be approved -->
+
+
+<!-- loop through array of order requests that haven't been responded to -->
+<div *ngFor="let orderRequest of orderRequests" class="well">
+  <!-- order Request has the time of pick up and order id which is then used by orderDetail to show the items in the order which are then connected to the menu item for retrieval -->
+  <app-order-request-tile [orderRequest]="orderRequest"></app-order-request-tile>
+
+</div>

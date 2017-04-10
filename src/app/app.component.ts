@@ -22,8 +22,11 @@ export class AppComponent {
           this.router.navigate(['login']);
         } else {
           if (auth.provider === 4) {
-            this.user_displayName = auth.auth.displayName;
+            this.user_displayName = auth.auth.email;
             this.user_email = auth.auth.email;
+          } else if (auth.provider === google) {
+            this.user_displayName = auth.google.displayName;
+            this.user_email = auth.google.email;
           }
           this.isLoggedIn = true;
           console.log(auth);
