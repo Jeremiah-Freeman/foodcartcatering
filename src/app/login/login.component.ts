@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../providers/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../user.model'
+import { DataService } from '../data.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [DataService]
 })
 
 
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, public router: Router) {
+  constructor(private authService: AuthService, public router: Router, private dataService: DataService) {
 
   }
 
@@ -31,8 +34,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  signupWithEmail(email,password) {
+  signupWithEmail(email,password,accountType) {
     this.authService.signupWithEmail(email,password).then((data) => {
+      var newUser = new User(email, accountType);
+      this.dataService.addUser(newUser);
       this.router.navigate(['']);
     })
   }

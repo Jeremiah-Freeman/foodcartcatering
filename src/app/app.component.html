@@ -3,6 +3,7 @@
     <div class="container">
       <div *ngIf="isLoggedIn">
         <p class="navbar-text navbar-right">Logged In: {{user_displayName}} ({{user_email}})<p>
+        <button class="navbar-left" (click)='logOut()'>LogOut</button>
       </div>
       <div *ngIf="!isLoggedIn">
         <p class="navbar-text navbar-right">Logged Out</p>
