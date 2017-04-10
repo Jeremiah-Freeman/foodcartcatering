@@ -23,5 +23,8 @@
     "Food",
     "Catering"
   ],
-  "private": true
+  "private": true,
+  "authors": [
+    "Jay Freeman David Quisenberry Benjamin Seaver Clayton Collins Maggie H"
+  ]
 }
