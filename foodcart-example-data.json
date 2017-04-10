@@ -128,7 +128,15 @@
         "price": 3.21,
         "rating": 5.0,
         "foodCartID": "2"
-        }]
-
+        }],
+    "users": [{
+        "email": "test@yahoo.com",
+        "partnerType": "c"
+      }, {"email": "test@aol.com",
+        "partnerType": "f"
+      }, {
+        "email": "test@oath.com",
+        "partnerType": "d"
+      }]
 
 }
