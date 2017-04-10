@@ -6,6 +6,10 @@ import { masterApiKeys } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { DataService } from './data.service';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './providers/auth.service';
+import { routing } from './app.routing';
+import { HomeComponent } from './home/home.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrderRequestComponent } from './order-request/order-request.component';
@@ -42,6 +46,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    HomeComponent
     CartOverviewComponent,
     OrdersListComponent,
     OrderRequestComponent,
@@ -70,9 +76,11 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    routing
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

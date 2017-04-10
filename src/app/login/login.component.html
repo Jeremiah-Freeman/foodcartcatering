@@ -1,0 +1,26 @@
+<div class="container">
+  <div>
+    <h1>Login With Google</h1>
+    <button class="btn btn-default" (click)="loginWithGoogle()">Login With Google</button>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <h1>Login With Email</h1>
+    <label>email:</label>
+    <input #email value="">
+    <label>password:</label>
+    <input #password value="">
+    <button class="btn btn-default" (click)="loginWithEmail(email.value, password.value)">Login with email</button>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <h1>Sign up</h1>
+    <label>email:</label>
+    <input #newEmail value="">
+    <label>password:</label>
+    <input #newPassword value="">
+    <button class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value)">Signup with email</button>
+  </div>
+</div>
