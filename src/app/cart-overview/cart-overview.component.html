@@ -1,3 +1,18 @@
-<p>
-  cart-overview works!
-</p>
+<!-- main portal for food cart operators -->
+<!-- found by navigating to www.foodcartcatering.com/carts/name -->
+
+<!-- navbar component with logo, dashboard, edit account, logout -->
+<div class="row">
+  <app-customer-navbar></app-customer-navbar>
+</div>
+
+<div class="row">
+  <div class="md-col-6">
+    <!-- component looping through order request tiles to be approved -->
+    <app-order-requests></app-order-requests>
+  </div>
+  <div class="md-col-4">
+    <!-- component looping through order tiles prioritized by date.  Pipe to filter view on daily, weekly, monthly -->
+    <app-orders-list> </app-orders-list>
+  </div>
+</div>

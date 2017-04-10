@@ -138,6 +138,16 @@ export class DataService {
     return this.angularFire.database.object('orders/' + orderId);
   }
 
+  // TODO test 
+  getOrdersByCustomerId(customerId: string) {
+    return this.angularFire.database.list('/orders', {
+      query: {
+        orderByChild: 'customerId',
+        equalTo: customerId
+      }
+    });
+  }
+
   addOrder(newOrder: Order) {
     // Remove unassigned key (Firebase will then create one)
     if (!newOrder.$key) {
