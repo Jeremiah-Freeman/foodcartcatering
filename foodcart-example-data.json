@@ -1,0 +1,134 @@
+{ "foodcarts": [{
+    "lat": "45.3472",
+    "lon": "121.3234",
+    "quadrantID": 2,
+    "number": "503-543-3211",
+    "email": "foodcart1@gmaile.com",
+    "name": "foodcart1",
+    "open": "8:30",
+    "close": "3:30",
+    "maximumOrderSize": 20
+  }, {
+    "lat": "45.3472",
+    "lon": "121.3234",
+    "quadrantID": 2,
+    "number": "503-543-3212",
+    "email": "foodcart2@gmaile.com",
+    "name": "foodcart2",
+    "open": "7:30",
+    "close": "2:30",
+    "maximumOrderSize": 30
+  }],
+  "customers": [{
+      "lat": "45.123984",
+      "lon": "124.3473",
+      "address": "400 sw 6th",
+      "instructions": "walk in and elevator up to the 8th floor",
+      "quadrantID": "3",
+      "name": "epicodus",
+      "number": "534-234-5790",
+      "email": "epcidos@aghame.com"
+    },{
+      "lat": "45.123984",
+      "lon": "124.3473",
+      "address": "401 sw 6th",
+      "instructions": "walk in and elevator up to the 9th floor",
+      "quadrantID": "2",
+      "name": "epicofs",
+      "number": "534-234-5790",
+      "email": "epcifos@aghame.com"
+    }],
+  "deliverers": [{
+    "lat": "45.123984",
+    "lon": "124.3473",
+    "quadrantID": "3",
+    "name": "steve",
+    "number": "538-234-5790",
+    "email": "steve@aghame.com"
+    }, {
+      "lat": "45.984",
+      "lon": "124.373",
+      "quadrantID": "2",
+      "name": "brad",
+      "number": "521-234-5790",
+      "email": "brad@aghame.com"
+      }],
+  "orders": [{
+      "foodCartID": "2",
+      "delivererID": "1",
+      "customerID": "2",
+      "productionCompletionStatus": false,
+      "deliveryCompletionStatus": false,
+      "orderRequestTimestamp": "2017-04-14 13:00",
+      "requestedDeliveryTime": "2017-04-16 13:00",
+      "orderAcceptedTimestamp": "2017-04-14 15:00",
+      "deliveryTimeEstimate": "20",
+      "orderReadyTime": "2017-04-16 12:40",
+      "delayTime": "0",
+      "pickupTimestamp": "2017-04-16 12:41",
+      "deliveryTimestamp": "2017-04-16 12:59"
+    }, {
+      "foodCartID": "2",
+      "delivererID": "1",
+      "customerID": "2",
+      "productionCompletionStatus": false,
+      "deliveryCompletionStatus": false,
+      "orderRequestTimestamp": "2017-04-14 14:00",
+      "requestedDeliveryTime": "2017-04-16 14:00",
+      "orderAcceptedTimestamp": "2017-04-14 16:00",
+      "deliveryTimeEstimate": "20",
+      "orderReadyTime": "2017-04-16 13:40",
+      "delayTime": "0",
+      "pickupTimestamp": "2017-04-16 13:41",
+      "deliveryTimestamp": "2017-04-16 13:59"
+    }],
+    "orderDetails": [{
+        "orderID": "1",
+        "menuItemID": "2",
+        "notes": "dont make it hot",
+        "quantity": "1"
+      }, {
+        "orderID": "2",
+        "menuItemID": "2",
+        "notes": "dont make it hot",
+        "quantity": "1"
+      }, {
+        "orderID": "1",
+        "menuItemID": "2",
+        "notes": "dont make it hot",
+        "quantity": "2"
+      }],
+    "menuItems": [{
+        "name": "burrito",
+        "description": "yummy burrito",
+        "price": 4.45,
+        "rating": 4.1,
+        "foodCartID": "1"
+      }, {
+        "name": "quesodilla",
+        "description": "yummy quesadilaa",
+        "price": 4.01,
+        "rating": 4.8,
+        "foodCartID": "1"
+      }, {
+        "name": "horchata",
+        "description": "yummy horchata",
+        "price": 2.25,
+        "rating": 4.9,
+        "foodCartID": "1"
+      }, {
+        "name": "sandwich",
+        "description": "yummy sandwich",
+        "price": 6.32,
+        "rating": 3.2,
+        "foodCartID": "2"
+      }, {
+        "name": "soup",
+        "description": "yummy soup",
+        "price": 3.21,
+        "rating": 5.0,
+        "foodCartID": "2"
+        }]
+
+
+}
