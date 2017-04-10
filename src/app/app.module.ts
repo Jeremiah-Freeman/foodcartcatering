@@ -47,7 +47,7 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
     CartOverviewComponent,
     OrdersListComponent,
     OrderRequestComponent,

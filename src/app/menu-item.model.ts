@@ -11,7 +11,6 @@ export class MenuItem {
   sanitizeFields() {
     this.name = this.name.trim();
     this.description = this.description.trim();
-    this.price = this.price.trim();
   }
 
   copyFields(fromMenuItem: MenuItem) {
