@@ -1,4 +1,4 @@
-export class Foodcart {
+export class FoodCart {
   constructor(
     public lat = '',
     public lon = '',
@@ -27,19 +27,19 @@ export class Foodcart {
     this.close = this.close.trim();
   }
 
-  copyFields(fromFoodcart: Foodcart) {
-    this.lat = fromFoodcart.lat;
-    this.lon = fromFoodcart.lon;
-    this.address = fromFoodcart.address;
-    this.instructions = fromFoodcart.instructions;
-    this.quadrantID = fromFoodcart.quadrantID;
-    this.name = fromFoodcart.name;
-    this.number = fromFoodcart.number;
-    this.email = fromFoodcart.email;
-    this.open = fromFoodcart.open;
-    this.close = fromFoodcart.close;
-    this.maximumOrderSize = fromFoodcart.maximumOrderSize;
-    this.$key = fromFoodcart.$key;
+  copyFields(fromFoodCart: FoodCart) {
+    this.lat = fromFoodCart.lat;
+    this.lon = fromFoodCart.lon;
+    this.address = fromFoodCart.address;
+    this.instructions = fromFoodCart.instructions;
+    this.quadrantID = fromFoodCart.quadrantID;
+    this.name = fromFoodCart.name;
+    this.number = fromFoodCart.number;
+    this.email = fromFoodCart.email;
+    this.open = fromFoodCart.open;
+    this.close = fromFoodCart.close;
+    this.maximumOrderSize = fromFoodCart.maximumOrderSize;
+    this.$key = fromFoodCart.$key;
   }
 
   validationMessage() {
