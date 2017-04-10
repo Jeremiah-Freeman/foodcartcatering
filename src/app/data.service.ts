@@ -5,6 +5,7 @@ import { MenuItem } from './menu-item.model';
 import { Deliverer } from './deliverer.model';
 import { Order } from './order.model';
 import { OrderDetail } from './order-detail.model';
+import { User } from './user.model';
 
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -17,6 +18,7 @@ export class DataService {
   menuItems: FirebaseListObservable<any[]>;
   orders: FirebaseListObservable<any[]>;
   orderDetails: FirebaseListObservable<any[]>;
+  users: FirebaseListObservable<any[]>;
 
   constructor(
     private angularFire: AngularFire
@@ -27,6 +29,7 @@ export class DataService {
     this.menuItems = angularFire.database.list('menuItems');
     this.orders = angularFire.database.list('orders');
     this.orderDetails = angularFire.database.list('orderDetails');
+    this.users = angularFire.database.list('users');
   }
 
   // Customers
@@ -170,6 +173,29 @@ export class DataService {
   deleteOrderDetail(orderDetail: OrderDetail) {
     const orderDetailInFirebase = this.getOrderDetailById(orderDetail.$key);
     return orderDetailInFirebase.remove();
+  }
+
+  // users
+
+  getUsers() {
+    return this.users;
+  }
+
+  getUserById(userId: string) {
+    return this.angularFire.database.object('users/' + userId);
+  }
+
+  addUser(newUser: User) {
+    // Remove unassigned key (Firebase will then create one)
+    if (!newUser.$key) {
+      delete newUser.$key;
+    }
+    return this.users.push(newUser);
+  }
+
+  deleteUser(user: User) {
+    const userInFirebase = this.getUserById(user.$key);
+    return userInFirebase.remove();
   }
 
 
