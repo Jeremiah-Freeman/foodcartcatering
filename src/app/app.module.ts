@@ -6,6 +6,10 @@ import { masterApiKeys } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { DataService } from './data.service';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './providers/auth.service';
+import { routing } from './app.routing';
+import { HomeComponent } from './home/home.component';
 
 
 export const firebaseConfig = {
@@ -17,14 +21,18 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    routing
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
