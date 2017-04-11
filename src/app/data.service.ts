@@ -64,6 +64,20 @@ export class DataService {
     return customerInFirebase.remove();
   }
 
+  updateCustomer(editCustomer: Customer) {
+    const customerInFirebase = this.getCustomerById(editCustomer.$key);
+    return customerInFirebase.update({
+      lat: editCustomer.lat,
+      lon: editCustomer.lon,
+      address: editCustomer.address,
+      instructions: editCustomer.instructions,
+      quadrantID: editCustomer.quadrantID,
+      name: editCustomer.name,
+      number: editCustomer.number,
+      email: editCustomer.email
+    });
+  }
+
 
   // Food Carts
 
@@ -97,6 +111,22 @@ export class DataService {
     });
   }
 
+  updateFoodCart(editFoodCart: FoodCart) {
+    const foodCartInFirebase = this.getFoodCartById(editFoodCart.$key);
+    return foodCartInFirebase.update({
+      lat: editFoodCart.lat,
+      lon: editFoodCart.lon,
+      address: editFoodCart.address,
+      instructions: editFoodCart.instructions,
+      quadrantID: editFoodCart.quadrantID,
+      name: editFoodCart.name,
+      number: editFoodCart.number,
+      email: editFoodCart.email,
+      open: editFoodCart.open,
+      close: editFoodCart.close,
+      maximumOrderSize: editFoodCart.maximumOrderSize
+    });
+  }
 
   // Menu Items
 
@@ -152,6 +182,19 @@ export class DataService {
   deleteDeliverer(deliverer: Deliverer) {
     const delivererInFirebase = this.getDelivererById(deliverer.$key);
     return delivererInFirebase.remove();
+  }
+
+  updateDeliverer(editDeliverer: Deliverer) {
+    const delivererInFirebase = this.getDelivererById(editDeliverer.$key);
+    return delivererInFirebase.update({
+      lat: editDeliverer.lat,
+      lon: editDeliverer.lon,
+      instructions: editDeliverer.instructions,
+      quadrantID: editDeliverer.quadrantID,
+      name: editDeliverer.name,
+      number: editDeliverer.number,
+      email: editDeliverer.email
+    });
   }
 
   getOrdersSummariesByDelivererId(delivererId: string) {
