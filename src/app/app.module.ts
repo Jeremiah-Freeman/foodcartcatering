@@ -34,6 +34,9 @@ import { OrderRequestsComponent } from './order-requests/order-requests.componen
 import { OrderRequestTileComponent } from './order-request-tile/order-request-tile.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { DelivererEditComponent } from './deliverer-edit/deliverer-edit.component';
+import { AddCartComponent } from './add-cart/add-cart.component';
+import { AddDelivererComponent } from './add-deliverer/add-deliverer.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 
 export const firebaseConfig = {
@@ -71,7 +74,10 @@ export const firebaseConfig = {
     OrderRequestsComponent,
     OrderRequestTileComponent,
     OrderListComponent,
-    DelivererEditComponent
+    DelivererEditComponent,
+    AddCartComponent,
+    AddDelivererComponent,
+    AddCustomerComponent
   ],
   imports: [
     BrowserModule,
