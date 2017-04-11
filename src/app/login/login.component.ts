@@ -46,27 +46,35 @@ export class LoginComponent implements OnInit {
         case "c":
           let newCustomer = new Customer;
           newCustomer.email = newUser.email;
-          this.dataService.addCustomer(newCustomer);
-          this.router.navigate(['customer-overview']);
+          var promise = this.dataService.addCustomer(newCustomer);
+          promise.then((success) => {
+            this.dataService.getCustomerByEmail(newUser.email).subscribe((customer) => {
+              this.router.navigate(['customer-edit/', customer[0].$key])
+            });
+          });
+          // this.router.navigate(['customer-overview']);
           break;
         case "d":
           let newDeliverer = new Deliverer;
           newDeliverer.email = newUser.email;
-          const promise = this.dataService.addDeliverer(newDeliverer);
+          var promise = this.dataService.addDeliverer(newDeliverer);
           promise.then((success) => {
-            console.log('hello');
             this.dataService.getDelivererByEmail(newUser.email).subscribe((deliverer) => {
-              console.log(deliverer);
               this.router.navigate(['deliverer-edit/', deliverer[0].$key])
             });
           });
-          this.router.navigate(['delivery-overview']);
+          // this.router.navigate(['delivery-overview']);
           break;
         case "f":
         let newFoodCart = new FoodCart;
         newFoodCart.email = newUser.email;
-        this.dataService.addFoodCart(newFoodCart);
-        this.router.navigate(['cart-overview']);
+        var promise = this.dataService.addFoodCart(newFoodCart);
+        promise.then((success) => {
+          this.dataService.getFoodCartByEmail(newUser.email).subscribe((cart) => {
+            this.router.navigate(['edit-cart/', cart[0].$key])
+          });
+        });
+        // this.router.navigate(['cart-overview']);
           break;
         default:
           console.log('no account type found');
