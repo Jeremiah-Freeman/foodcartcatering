@@ -32,19 +32,19 @@ export class AppComponent {
             this.user_email = auth.google.email;
           }
           this.isLoggedIn = true;
-          this.dataService.getUsers().subscribe(users => {
-            for (let user of users) {
-              if (user.email === this.user_email) {
-                if (user.partnerType === 'c') {
-                  router.navigate(['customer-overview'])
-                } else if (user.partnerType === 'f') {
-                  router.navigate(['cart-overview'])
-                } else if (user.partnerType === 'd') {
-                  router.navigate(['delivery-overview'])
-                }
-              }
-            }
-          });
+          // this.dataService.getUsers().subscribe(users => {
+          //   for (let user of users) {
+          //     if (user.email === this.user_email) {
+          //       if (user.partnerType === 'c') {
+          //         router.navigate(['customer-overview'])
+          //       } else if (user.partnerType === 'f') {
+          //         router.navigate(['cart-overview'])
+          //       } else if (user.partnerType === 'd') {
+          //         router.navigate(['delivery-overview'])
+          //       }
+          //     }
+          //   }
+          // });
 
           console.log(auth);
           console.log("Logged in");
