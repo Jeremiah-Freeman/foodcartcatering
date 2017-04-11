@@ -136,6 +136,15 @@ export class DataService {
     return delivererInFirebase.remove();
   }
 
+  getOrdersSummariesByDelivererId(delivererId: string) {
+    return this.angularFire.database.list('/orders', {
+      query: {
+        orderByChild: "delivererID",
+        equalTo: delivererId
+      }
+    });
+  }
+
 
   // Order
 
@@ -171,7 +180,7 @@ export class DataService {
   }
 
 
-  getOrdersSummariesByFoodCartId(foodCartId: string, ) {
+  getOrdersSummariesByFoodCartId(foodCartId: string) {
 
     return this.angularFire.database.list('/orders', {
       query: {
@@ -180,6 +189,17 @@ export class DataService {
       }
     });
   }
+
+  getOrdersSummariesByCustomerId(customerId: string) {
+    return this.angularFire.database.list('/orders', {
+      query: {
+        orderByChild: "customerID",
+        equalTo: customerId
+      }
+    });
+  }
+
+
 
   getOrderDetailsByOrderId(orderId: string) {
 
@@ -270,6 +290,18 @@ export class DataService {
     this.getOrdersSummariesByFoodCartId(foodCartID).subscribe((orders) => {
       this.summaryBuilder(summaries, orders);
     });
+  }
+
+  getOrdersSummariesByDelivererId2(summaries, delivererID) {
+    this.getOrdersSummariesByDelivererId(delivererID).subscribe((orders) => {
+      this.summaryBuilder(summaries, orders);
+    })
+  }
+
+  getOrdersSummariesByCustomerId2(summaries, customerID) {
+    this.getOrdersSummariesByCustomerId(customerID).subscribe((orders) => {
+      this.summaryBuilder(summaries, orders);
+    })
   }
 
 
