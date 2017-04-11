@@ -1,0 +1,30 @@
+<h1>Delivery Orders</h1>
+<div class="container">
+  <div *ngFor="let summary of summaries" class="well">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="pickup">
+          <h5>pick up:</h5>
+          <h4><strong>{{summary.foodCart.name}}</strong></h4>
+          <ul>
+            <li>address:<br> {{summary.foodCart.address}}</li>
+          </ul>
+          <button class="btn btn-success">Picked Up!</button>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="delivery">
+            <h5>delivery:</h5>
+            <h4><strong>{{summary.customer.name}}</strong></h4>
+            <ul>
+              <li>address:<br> {{summary.customer.address}}</li>
+              <li>time:<br> {{summary.order.deliveryTimestamp | date:'shortTime'}}</li>
+              <li>price: {{summary.revenue}}</li>
+          </ul>
+          <button class="btn btn-success">Delivered!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-delivery-navbar></app-delivery-navbar>
