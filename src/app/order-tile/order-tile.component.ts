@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Order } from '../order.model';
 
 @Component({
   selector: 'app-order-tile',
@@ -13,13 +14,6 @@ export class OrderTileComponent implements OnInit {
   ngOnInit() {
   }
 
-  getItemName( menuItemID: string ) {
-    for (menuItem in menuItems) {
-      if (menuItemID === menuItem.$key){
-        return menuItem.name;
-      }
-    }
-  }
 
   notifyDelay(orderID){
 

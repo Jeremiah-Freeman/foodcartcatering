@@ -16,3 +16,30 @@
     <app-orders-list> </app-orders-list>
   </div>
 </div>
+
+<div class="test">
+  <div *ngFor="let summary of summaries">
+    <div class="panel panel-default">
+
+    <p>
+      customer id: {{summary.order.customerID}}
+    </p>
+    <p>
+      revenue: {{summary.revenue}}
+    </p>
+    <hr>
+    <div *ngFor="let detail of summary.details">
+      <p>
+        item: {{detail.menuItem.name}}
+      </p>
+      <p>
+        quantity: {{detail.orderDetail.quantity}}
+      </p>
+      <p>
+        notes: {{detail.orderDetail.notes}}
+      </p>
+      <hr>
+    </div>
+  </div>
+  </div>
+</div>
