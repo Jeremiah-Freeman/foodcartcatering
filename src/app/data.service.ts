@@ -284,8 +284,30 @@ export class DataService {
     // console.log(orders)
     // loop through each order
     for (let i=0; i<orders.length; i++){
+
       // then we push on to the first summary object the order itself, and create placehold array for the details relating to that order, and placeholder for revenue.
-      summaries.push({order: orders[i], details: [], revenue: 0});
+      summaries.push({order: orders[i], details: [], revenue: 0, customer: new Customer(), deliverer: new Deliverer(), foodCart: new FoodCart()});
+      let customerID = orders[i].customerID;
+      let delivererID = orders[i].delivererID;
+      let foodCartID = orders[i].foodCartID;
+      if (customerID) {
+        this.getCustomerById(customerID).subscribe((customer) => {
+          summaries[i].customer.copyFields(customer);
+        });
+      }
+
+      if (delivererID) {
+        this.getDelivererById(delivererID).subscribe((deliverer) => {
+          summaries[i].deliverer.copyFields(deliverer);
+        });
+      }
+
+      if (foodCartID) {
+        this.getFoodCartById(foodCartID).subscribe((foodCart) => {
+          summaries[i].foodCart.copyFields(foodCart);
+        });
+      }
+
       // go get the the list of details
       this.getOrderDetailsByOrderId(orders[i].$key).subscribe((details) => {
         for (let j=0; j<details.length; j++) {
@@ -298,6 +320,7 @@ export class DataService {
             // generate revenue for detail and add to total revenue
             summaries[i].revenue += quantity * item.price;
             console.log(summaries[i].revenue);
+            console.log(summaries);
           });
         }
       });
