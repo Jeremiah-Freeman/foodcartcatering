@@ -30,7 +30,7 @@ export class CustomerEditComponent implements OnInit {
       this.customerId = urlParameters['id'];
       this.dataService.getCustomerById(this.customerId).subscribe((customer) => {
         this.customer = customer;
-        console.log(this.customer);
+        this.edit.copyFields(this.customer);
       });
     });
   }
@@ -38,7 +38,7 @@ export class CustomerEditComponent implements OnInit {
   updateCustomer(){
     this.editValidationMessage = this.edit.validationMessage();
     if(!this.editValidationMessage){
-      const promise = this.dataService.updateDeliverer(this.edit);
+      const promise = this.dataService.updateCustomer(this.edit);
       promise.then((success) => {
         // add id to this route to show specific delivery page
         this.router.navigate(['customer-overview/']);

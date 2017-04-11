@@ -31,6 +31,7 @@ export class DelivererEditComponent implements OnInit {
       this.delivererId = urlParameters['id'];
       this.dataService.getDelivererById(this.delivererId).subscribe((deliverer) => {
         this.deliverer = deliverer;
+        this.edit.copyFields(this.deliverer);
       });
     });
   }
