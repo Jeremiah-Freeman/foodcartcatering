@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['customer-edit/', customer[0].$key])
             });
           });
-          // this.router.navigate(['customer-overview']);
           break;
         case "d":
           let newDeliverer = new Deliverer;
@@ -63,7 +62,6 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['deliverer-edit/', deliverer[0].$key])
             });
           });
-          // this.router.navigate(['delivery-overview']);
           break;
         case "f":
         let newFoodCart = new FoodCart;
@@ -74,7 +72,6 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['edit-cart/', cart[0].$key])
           });
         });
-        // this.router.navigate(['cart-overview']);
           break;
         default:
           console.log('no account type found');
