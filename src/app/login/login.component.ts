@@ -52,7 +52,14 @@ export class LoginComponent implements OnInit {
         case "d":
           let newDeliverer = new Deliverer;
           newDeliverer.email = newUser.email;
-          this.dataService.addDeliverer(newDeliverer);
+          const promise = this.dataService.addDeliverer(newDeliverer);
+          promise.then((success) => {
+            console.log('hello');
+            this.dataService.getDelivererByEmail(newUser.email).subscribe((deliverer) => {
+              console.log(deliverer);
+              this.router.navigate(['deliverer-edit/', deliverer[0].$key])
+            });
+          });
           this.router.navigate(['delivery-overview']);
           break;
         case "f":
