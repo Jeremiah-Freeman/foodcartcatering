@@ -7,10 +7,11 @@ import { Order } from './../order.model';
   styleUrls: ['./order-request-tile.component.css']
 })
 export class OrderRequestTileComponent implements OnInit {
-  
+
 
   ngOnInit() {
   }
+
 
 
 

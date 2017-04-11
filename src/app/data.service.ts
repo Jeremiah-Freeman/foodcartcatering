@@ -138,7 +138,7 @@ export class DataService {
     return this.angularFire.database.object('orders/' + orderId);
   }
 
-  // TODO test 
+  // TODO test
   getOrdersByCustomerId(customerId: string) {
     return this.angularFire.database.list('/orders', {
       query: {
@@ -159,6 +159,27 @@ export class DataService {
   deleteOrder(order: Order) {
     const orderInFirebase = this.getOrderById(order.$key);
     return orderInFirebase.remove();
+  }
+
+
+  getOrdersSummariesByFoodCartId(foodCartId: string, ) {
+
+    return this.angularFire.database.list('/orders', {
+      query: {
+        orderByChild: "foodCartID",
+        equalTo: foodCartId
+      }
+    });
+  }
+
+  getOrderDetailsByOrderId(orderId: string) {
+
+    return this.angularFire.database.list('/orderDetails', {
+      query: {
+        orderByChild: "orderID",
+        equalTo: orderId
+      }
+    });
   }
 
 
@@ -185,6 +206,7 @@ export class DataService {
     return orderDetailInFirebase.remove();
   }
 
+
   // users
 
   getUsers() {
@@ -206,6 +228,32 @@ export class DataService {
   deleteUser(user: User) {
     const userInFirebase = this.getUserById(user.$key);
     return userInFirebase.remove();
+  }
+
+
+  // Aggregator Functions
+
+  summaryBuilder(summaries, orders) {
+    // console.log(orders)
+    for (let i=0; i<orders.length; i++){
+      summaries.push({order: orders[i], details: [], revenue: 0});
+      this.getOrderDetailsByOrderId(orders[i].$key).subscribe((details) => {
+        for (let j=0; j<details.length; j++) {
+          this.getMenuItemById(details[j].menuItemID).subscribe((item) => {
+            summaries[i].details.push({orderDetail: details[j], menuItem: item});
+            let quantity = parseInt(summaries[i].details[j].orderDetail.quantity);
+            summaries[i].revenue += quantity * item.price;
+            console.log(summaries[i].revenue);
+          });
+        }
+      });
+    }
+  }
+
+  getOrdersSummariesByFoodCartId2(summaries, foodCartID) {
+    this.getOrdersSummariesByFoodCartId(foodCartID).subscribe((orders) => {
+      this.summaryBuilder(summaries, orders);
+    });
   }
 
 
