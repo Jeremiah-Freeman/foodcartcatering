@@ -7,16 +7,11 @@ import { Order } from '../order.model';
   styleUrls: ['./order-tile.component.css']
 })
 export class OrderTileComponent implements OnInit {
-  @Input() order: Order;
+
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-
-  notifyDelay(orderID){
-
   }
 
 }

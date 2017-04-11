@@ -8,7 +8,6 @@ import { Order } from '../order.model';
 })
 export class OrderListComponent implements OnInit {
 
-  orders: Order[];
 
   constructor() { }
 
