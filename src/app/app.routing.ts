@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomerOverviewComponent } from './customer-overview/customer-overview.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { DeliveryOverviewComponent } from './delivery-overview/delivery-overview.component';
+import { DelivererEditComponent } from './deliverer-edit/deliverer-edit.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +23,9 @@ const appRoutes: Routes = [
   }, {
     path: 'delivery-overview',
     component: DeliveryOverviewComponent
+  }, {
+    path: 'deliverer-edit/:id',
+    component: DelivererEditComponent
   }
 ];
 
