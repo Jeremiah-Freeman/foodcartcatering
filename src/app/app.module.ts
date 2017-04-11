@@ -34,6 +34,8 @@ import { OrderRequestsComponent } from './order-requests/order-requests.componen
 import { OrderRequestTileComponent } from './order-request-tile/order-request-tile.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { DelivererEditComponent } from './deliverer-edit/deliverer-edit.component';
+import { DeliveryOrdersComponent } from './delivery-orders/delivery-orders.component';
+import { DeliveryPlanComponent} from './delivery-plan/delivery-plan.component';
 
 
 export const firebaseConfig = {
@@ -71,7 +73,9 @@ export const firebaseConfig = {
     OrderRequestsComponent,
     OrderRequestTileComponent,
     OrderListComponent,
-    DelivererEditComponent
+    DelivererEditComponent,
+    DeliveryOrdersComponent,
+    DeliveryPlanComponent
   ],
   imports: [
     BrowserModule,
