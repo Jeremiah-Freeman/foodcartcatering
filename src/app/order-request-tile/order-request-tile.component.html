@@ -1,11 +1,5 @@
 <!-- component for showing each order request to be accepted or denied.  Will show summary of pick up time, items requested with quantity.  Potential Revenue? -->
 <div class="well">
-  <h2>Time Requested: {{orderRequest.orderReadyTime}}</h2>
-  <!-- loop through array of orderDetails to show how many of each food item is requested -->
-  <h2 *ngFor="let detail of details">{{detail.quantity}} of {{getItemName(detail.menuItemID)}}</h2>
-  <h2> Revenue Generated: ${{getOrderRevenue()}}</h2>
-  <button (click)="approveOrder(orderRequest)">approve</button>
-  <button(click)="denyOrder(orderRequest)">deny</button>
-
+  
 
 </div>

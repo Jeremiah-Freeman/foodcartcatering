@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  orders: Order[];
 
   constructor() { }
 
