@@ -9,6 +9,8 @@ import { DeliveryRequestsComponent } from './delivery-requests/delivery-requests
 import { CustomerOverviewComponent } from './customer-overview/customer-overview.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { DelivererEditComponent } from './deliverer-edit/deliverer-edit.component';
+import { EditCartComponent } from './edit-cart/edit-cart.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 
 const appRoutes: Routes = [
@@ -39,6 +41,12 @@ const appRoutes: Routes = [
   },{
     path: 'deliverer-edit/:id',
     component: DelivererEditComponent
+  }, {
+    path: 'edit-cart/:id',
+    component: EditCartComponent
+  }, {
+    path: 'customer-edit/:id',
+    component: CustomerEditComponent
   }
 ];
 

@@ -42,6 +42,15 @@ export class DataService {
     return this.angularFire.database.object('customers/' + customerId);
   }
 
+  getCustomerByEmail(email: string) {
+    return this.angularFire.database.list('customers/', {
+      query: {
+        orderByChild: "email",
+        equalTo: email
+      }
+    });
+  }
+
   addCustomer(newCustomer: Customer) {
     // Remove unassigned key (Firebase will then create one)
     if (!newCustomer.$key) {
@@ -77,6 +86,15 @@ export class DataService {
   deleteFoodCart(foodCart: FoodCart) {
     const foodCartInFirebase = this.getFoodCartById(foodCart.$key);
     return foodCartInFirebase.remove();
+  }
+
+  getFoodCartByEmail(email: string) {
+    return this.angularFire.database.list('foodCarts/', {
+      query: {
+        orderByChild: "email",
+        equalTo: email
+      }
+    });
   }
 
 
