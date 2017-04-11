@@ -1,17 +1,19 @@
-<p>
-  delivery-orders works!
-</p>
+<h1>Delivery Orders</h1>
 <div class="container">
-  <div class="well">
+  <div *ngFor="let summary of summaries" class="well">
     <div class="row">
       <div class="col-xs-4">
 
-        <h5>Pickup</h5>
+        <h5>{{summary.order.pickupTimestamp}}</h5>
       </div>
       <div class="col-xs-8">
         <ul>
-          <li>address</li>
-          <li>time</li>
+          <li>pick up time: {{summary.order.foodCartID}}</li>
+          <li>pick up address: {{(getOrderPickup(summary.order.customerID)|async)?.address}}</li>
+          <li>delivery time: {{summary.order.requestedDeliveryTime}}</li>
+          <li>delivery address: </li>
+          <li>revenue: {{summary.revenue}}</li>
+
           <button class="btn btn-success">Order Picked Up!</button>
         </ul>
       </div>

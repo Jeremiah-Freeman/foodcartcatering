@@ -8,7 +8,7 @@ import { DeliveryOrdersComponent } from './delivery-orders/delivery-orders.compo
 import { DeliveryRequestsComponent } from './delivery-requests/delivery-requests.component';
 import { CustomerOverviewComponent } from './customer-overview/customer-overview.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
-
+import { DelivererEditComponent } from './deliverer-edit/deliverer-edit.component';
 
 
 const appRoutes: Routes = [
@@ -36,6 +36,9 @@ const appRoutes: Routes = [
   },{
     path: 'delivery-overview/requests',
     component: DeliveryRequestsComponent
+  },{
+    path: 'deliverer-edit/:id',
+    component: DelivererEditComponent
   }
 ];
 
