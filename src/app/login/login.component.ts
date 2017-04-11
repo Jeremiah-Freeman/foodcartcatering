@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../providers/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../user.model'
+import { Customer } from '../customer.model'
+import { Deliverer } from '../deliverer.model'
+import { FoodCart } from '../food-cart.model'
 import { DataService } from '../data.service'
 
 @Component({
@@ -38,7 +41,30 @@ export class LoginComponent implements OnInit {
     this.authService.signupWithEmail(email,password).then((data) => {
       var newUser = new User(email, accountType);
       this.dataService.addUser(newUser);
-      this.router.navigate(['']);
+
+      switch(newUser.partnerType){
+        case "c":
+          let newCustomer = new Customer;
+          newCustomer.email = newUser.email;
+          this.dataService.addCustomer(newCustomer);
+          this.router.navigate(['customer-overview']);
+          break;
+        case "d":
+          let newDeliverer = new Deliverer;
+          newDeliverer.email = newUser.email;
+          this.dataService.addDeliverer(newDeliverer);
+          this.router.navigate(['delivery-overview']);
+          break;
+        case "f":
+        let newFoodCart = new FoodCart;
+        newFoodCart.email = newUser.email;
+        this.dataService.addFoodCart(newFoodCart);
+        this.router.navigate(['cart-overview']);
+          break;
+        default:
+          console.log('no account type found');
+      }
+
     })
   }
 
