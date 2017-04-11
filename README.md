@@ -52,3 +52,5 @@ AppComponent nav bar that is sensitive to type of user.
 ##Wishlist
 
 Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns
+
+integrate yelp API to show potential food cart providers  
