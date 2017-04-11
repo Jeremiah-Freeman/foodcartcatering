@@ -79,7 +79,7 @@ export const firebaseConfig = {
     OrderListComponent,
     DelivererEditComponent,
     DeliveryOrdersComponent,
-    DeliveryPlanComponent
+    DeliveryPlanComponent,
     AddCartComponent,
     AddDelivererComponent,
     AddCustomerComponent
