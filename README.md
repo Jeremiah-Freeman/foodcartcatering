@@ -29,4 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ##Wishlist
 
-Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns 
+Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns
+
+Add specified index to all querys retrieving anything by email or other non id-constructed properties

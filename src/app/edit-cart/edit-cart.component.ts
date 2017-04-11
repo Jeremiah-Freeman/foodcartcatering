@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class EditCartComponent implements OnInit {
   foodCartId: string = null;
   foodCart;
-  
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -25,7 +25,7 @@ export class EditCartComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
       this.foodCartId = urlParameters['id'];
-      this.dataService.getDelivererById(this.foodCartId).subscribe((foodCart) => {
+      this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
         this.foodCart = foodCart;
         console.log(this.foodCart);
       });
