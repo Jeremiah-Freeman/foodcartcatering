@@ -2,20 +2,27 @@
 <div class="container">
   <div *ngFor="let summary of summaries" class="well">
     <div class="row">
-      <div class="col-xs-4">
-
-        <h5>{{summary.order.pickupTimestamp}}</h5>
+      <div class="col-xs-6">
+        <div class="pickup">
+          <h5>pick up:</h5>
+          <h4><strong>{{summary.foodCart.name}}</strong></h4>
+          <ul>
+            <li>address:<br> {{summary.foodCart.address}}</li>
+          </ul>
+          <button class="btn btn-success">Picked Up!</button>
+        </div>
       </div>
-      <div class="col-xs-8">
-        <ul>
-          <li>pick up time: {{summary.order.foodCartID}}</li>
-          <li>pick up address: {{(getOrderPickup(summary.order.customerID)|async)?.address}}</li>
-          <li>delivery time: {{summary.order.requestedDeliveryTime}}</li>
-          <li>delivery address: </li>
-          <li>revenue: {{summary.revenue}}</li>
-
-          <button class="btn btn-success">Order Picked Up!</button>
-        </ul>
+      <div class="col-xs-6">
+        <div class="delivery">
+            <h5>delivery:</h5>
+            <h4><strong>{{summary.customer.name}}</strong></h4>
+            <ul>
+              <li>address:<br> {{summary.customer.address}}</li>
+              <li>time:<br> {{summary.order.deliveryTimestamp | date:'shortTime'}}</li>
+              <li>price: {{summary.revenue}}</li>
+          </ul>
+          <button class="btn btn-success">Delivered!</button>
+        </div>
       </div>
     </div>
   </div>

@@ -27,7 +27,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-<<<<<<< HEAD
 
 ## AngularMaps installation (potential issues)
 Epicodus-1A:foodcartcatering Guest$ npm install angular2-google-maps --save
@@ -47,8 +46,9 @@ npm WARN angularfire2@2.0.0-beta.8 requires a peer of @angular/platform-browser@
 npm WARN angularfire2@2.0.0-beta.8 requires a peer of @angular/platform-browser-dynamic@^2.0.0 but none was installed.
 npm WARN angular2-google-maps@0.17.0 requires a peer of @angular/common@^2.3.1 but none was installed.
 npm WARN angular2-google-maps@0.17.0 requires a peer of @angular/core@^2.3.1 but none was installed.
-=======
+
+##NEEDLIST
+AppComponent nav bar that is sensitive to type of user.
 ##Wishlist
 
-Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns 
->>>>>>> upstream/master
+Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns

@@ -15,12 +15,7 @@ export class DeliveryOrdersComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
-
-  }
-
-  getOrderPickup(id: string){
-    let cart = this.dataService.getFoodCartById(id);
-    return cart;
+    console.log(this.summaries);
   }
 
 }
