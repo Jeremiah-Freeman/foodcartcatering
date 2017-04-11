@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 export class DelivererEditComponent implements OnInit {
   delivererId: string = null;
   deliverer;
+  edit = new Deliverer();
+  editValidationMessage = '';
 
   constructor(
     private router: Router,
@@ -29,8 +31,23 @@ export class DelivererEditComponent implements OnInit {
       this.delivererId = urlParameters['id'];
       this.dataService.getDelivererById(this.delivererId).subscribe((deliverer) => {
         this.deliverer = deliverer;
+        this.edit.copyFields(this.deliverer);
       });
     });
+  }
+
+
+  updateDeliverer(){
+    this.editValidationMessage = this.edit.validationMessage();
+    if(!this.editValidationMessage){
+      const promise = this.dataService.updateDeliverer(this.edit);
+      promise.then((success) => {
+        // add id to this route to show specific delivery page
+        this.router.navigate(['delivery-overview/']);
+      }).catch((failure) => {
+        console.log('Deliverer save failed');
+      });
+    }
   }
 
 }
