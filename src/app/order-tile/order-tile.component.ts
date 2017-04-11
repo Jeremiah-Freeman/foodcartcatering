@@ -6,23 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./order-tile.component.css']
 })
 export class OrderTileComponent implements OnInit {
-  @Input() order: Order;
+
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  getItemName( menuItemID: string ) {
-    for (menuItem in menuItems) {
-      if (menuItemID === menuItem.$key){
-        return menuItem.name;
-      }
-    }
-  }
-
-  notifyDelay(orderID){
-
   }
 
 }
