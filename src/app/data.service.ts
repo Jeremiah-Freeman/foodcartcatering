@@ -114,6 +114,15 @@ export class DataService {
     return this.angularFire.database.object('deliverers/' + delivererId);
   }
 
+  getDelivererByEmail(email: string) {
+    return this.angularFire.database.list('deliverers/', {
+      query: {
+        orderByChild: "email",
+        equalTo: email
+      }
+    });
+  }
+
   addDeliverer(newDeliverer: Deliverer) {
     // Remove unassigned key (Firebase will then create one)
     if (!newDeliverer.$key) {
@@ -232,16 +241,23 @@ export class DataService {
 
 
   // Aggregator Functions
-
+  // pass in the empty summaries array and list of orders
   summaryBuilder(summaries, orders) {
     // console.log(orders)
+    // loop through each order
     for (let i=0; i<orders.length; i++){
+      // then we push on to the first summary object the order itself, and create placehold array for the details relating to that order, and placeholder for revenue.
       summaries.push({order: orders[i], details: [], revenue: 0});
+      // go get the the list of details
       this.getOrderDetailsByOrderId(orders[i].$key).subscribe((details) => {
         for (let j=0; j<details.length; j++) {
+          // connect the menu the item that relates to the detail in context
           this.getMenuItemById(details[j].menuItemID).subscribe((item) => {
+            // push the actual orderDetail and menuItm onto summaries array on position of order
             summaries[i].details.push({orderDetail: details[j], menuItem: item});
+            // turn quanity into a number
             let quantity = parseInt(summaries[i].details[j].orderDetail.quantity);
+            // generate revenue for detail and add to total revenue
             summaries[i].revenue += quantity * item.price;
             console.log(summaries[i].revenue);
           });
