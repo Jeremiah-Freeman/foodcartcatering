@@ -41,7 +41,7 @@ export class EditCartComponent implements OnInit {
       const promise = this.dataService.updateFoodCart(this.edit);
       promise.then((success) => {
         // add id to this route to show specific delivery page
-        this.router.navigate(['cart-overview']);
+        this.router.navigate(['cart-overview/'], this.foodCartId);
       }).catch((failure) => {
         console.log('Cart save failed');
       });
