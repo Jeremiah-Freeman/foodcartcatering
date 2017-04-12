@@ -1,7 +1,7 @@
 export class Deliverer {
   constructor(
-    public lat = '',
-    public lon = '',
+    public lat = 0,
+    public lon = 0,
     public instructions = '',
     // TODO probably not necessary
     public quadrantID = '',
@@ -12,8 +12,6 @@ export class Deliverer {
   ) { }
 
   sanitizeFields() {
-    this.lat = this.lat.trim();
-    this.lon = this.lon.trim();
     this.instructions = this.instructions.trim();
     this.quadrantID = this.quadrantID.trim();
     this.name = this.name.trim();
