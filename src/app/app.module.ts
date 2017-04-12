@@ -39,6 +39,7 @@ import { DeliveryPlanComponent} from './delivery-plan/delivery-plan.component';
 import { AddCartComponent } from './add-cart/add-cart.component';
 import { AddDelivererComponent } from './add-deliverer/add-deliverer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 
 
@@ -89,7 +90,10 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: masterApiKeys.googleMapsApiKey
+    })
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
