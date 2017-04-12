@@ -3,7 +3,7 @@ export class MenuItem {
     public name = '',
     public description = '',
     public price = 0,
-    public rating = null,
+    public rating = '',
     public foodCartID = '',
     public $key = null
   ) { }
