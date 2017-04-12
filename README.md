@@ -51,6 +51,6 @@ npm WARN angular2-google-maps@0.17.0 requires a peer of @angular/core@^2.3.1 but
 AppComponent nav bar that is sensitive to type of user.
 ##Wishlist
 
-Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns
-
-integrate yelp API to show potential food cart providers  
+* Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns
+* Add specified index to all querys retrieving anything by email or other non id-constructed properties
+* integrate yelp API to show potential food cart providers  
