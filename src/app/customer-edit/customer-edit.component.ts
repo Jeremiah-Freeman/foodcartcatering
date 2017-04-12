@@ -41,7 +41,7 @@ export class CustomerEditComponent implements OnInit {
       const promise = this.dataService.updateCustomer(this.edit);
       promise.then((success) => {
         // add id to this route to show specific delivery page
-        this.router.navigate(['customer-overview/']);
+        this.router.navigate(['customer-overview/', this.customerId]);
       }).catch((failure) => {
         console.log('Customer save failed');
       });
