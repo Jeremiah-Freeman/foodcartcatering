@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <div *ngIf="menuItems | async"> -->
+
 
         <tr *ngFor="let item of menuItems | async">
           <td>{{item.name}}</td>
@@ -19,7 +19,7 @@
           <td><button (click)="editMenuItem(item);" class="btn btn-xs btn-info">Edit</button></td>
           <td><button (click)="deleteMenuItem(item);" class="btn btn-xs btn-danger">Delete</button></td>
         </tr>
-      <!-- </div> -->
+
     </tbody>
   </table>
 </div>
