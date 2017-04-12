@@ -282,6 +282,7 @@ export class DataService {
 
   updateOrderPickupTimestamp(editOrder: Order){
     let dateNow = new Date();
+    // NOTE GMT TIME
     let timeStamp = dateNow.getFullYear() + "-" + (dateNow.getMonth()+1) + "-"+dateNow.getMonth()+"T"+ dateNow.getUTCHours()+":"+dateNow.getUTCMinutes ()+":"+dateNow.getUTCSeconds();
 
     const orderInFirebase = this.getOrderById(editOrder.$key);
@@ -293,12 +294,14 @@ export class DataService {
   }
   updateOrderDeliveryTimestamp(editOrder: Order){
     let dateNow = new Date();
+    // NOTE GMT TIME
     let timeStamp = dateNow.getFullYear() + "-" + (dateNow.getMonth()+1) + "-"+dateNow.getMonth()+"T"+ dateNow.getUTCHours()+":"+dateNow.getUTCMinutes ()+":"+dateNow.getUTCSeconds();
 
     const orderInFirebase = this.getOrderById(editOrder.$key);
     return orderInFirebase.update({
 
       deliveryTimestamp: timeStamp,
+      deliveryCompletionStatus: true,
 
     });
   }

@@ -21,7 +21,7 @@
             <ul>
               <li>address:<br> {{summary.customer.address}}</li>
               <li>time:<br> {{summary.order.requestedDeliveryTime | date:'shortTime'}}</li>
-              <li>price: {{summary.revenue}}</li>
+              <li>price: ${{summary.revenue}}</li>
           </ul>
 
           <button (click)="updateDeliveryTime(summary.order)" class="btn btn-success">Delivered!</button>
