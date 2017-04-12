@@ -30,13 +30,13 @@ const appRoutes: Routes = [
     path: 'delivery-overview/:id',
     component: DeliveryOverviewComponent
   }, {
-    path: 'delivery-overview/orders',
+    path: 'delivery-overview/:id/orders',
     component: DeliveryOrdersComponent
   },{
-    path: 'delivery-overview/plan',
+    path: 'delivery-overview/:id/plan',
     component: DeliveryPlanComponent
   },{
-    path: 'delivery-overview/requests',
+    path: 'delivery-overview/:id/requests',
     component: DeliveryRequestsComponent
   },{
     path: 'deliverer-edit/:id',

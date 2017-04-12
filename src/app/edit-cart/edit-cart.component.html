@@ -19,5 +19,14 @@
 
 
 <button (click)="updateFoodCart()">Save Profile</button>
+<div *ngIf='saved'>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3>
+        changes saved!
+      </h3>
+    </div>
+  </div>
+</div>
 
 <app-edit-menu [foodCartId]="foodCartId"></app-edit-menu>
