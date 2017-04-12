@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.authService.af.auth.subscribe((auth) => {
+      if (auth) {
+
       console.log(auth);
       this.dataService.getUserByEmail(auth.auth.email).subscribe((user) => {
         console.log(user);
@@ -27,7 +29,7 @@ export class HomeComponent implements OnInit {
             break;
           case "d":
             this.dataService.getDelivererByEmail(auth.auth.email).subscribe((deliverer) => {
-              this.router.navigate(['deliverer-overview/', deliverer[0].$key])
+              this.router.navigate(['delivery-overview/', deliverer[0].$key])
             });
             break;
           case "f":
@@ -39,6 +41,9 @@ export class HomeComponent implements OnInit {
             console.log('no account type found');
         }
       });
+    } else {
+      this.router.navigate(['login']);
+    }
     });
   }
 
