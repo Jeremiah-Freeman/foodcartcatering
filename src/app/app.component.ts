@@ -12,40 +12,50 @@ import { DataService } from './data.service';
 export class AppComponent {
   private isLoggedIn: Boolean=true;
   // private isLoggedIn: Boolean;
-  private user_displayName: String;
-  private user_email: String;
-  private user_type: String;
+  private userDisplayName: string;
+  private userEmail: string;
+  private userType: string;
+  private partnerID: string;
+
+
   constructor(public authService: AuthService, private router: Router, private dataService: DataService) {
     this.authService.af.auth.subscribe(
       (auth) => {
         if (auth == null) {
           console.log("Logged out");
           this.isLoggedIn = false;
-          this.user_displayName = '';
-          this.user_email = '';
+          this.userDisplayName = '';
+          this.userEmail = '';
           this.router.navigate(['login']);
         } else {
           if (auth.provider === 4) {
-            this.user_displayName = auth.auth.email;
-            this.user_email = auth.auth.email;
+            this.userDisplayName = auth.auth.email;
+            this.userEmail = auth.auth.email;
           } else if (auth.provider === 3) {
-            this.user_displayName = auth.google.displayName;
-            this.user_email = auth.google.email;
+            this.userDisplayName = auth.google.displayName;
+            this.userEmail = auth.google.email;
           }
           this.isLoggedIn = true;
-          // this.dataService.getUsers().subscribe(users => {
-          //   for (let user of users) {
-          //     if (user.email === this.user_email) {
-          //       if (user.partnerType === 'c') {
-          //         router.navigate(['customer-overview'])
-          //       } else if (user.partnerType === 'f') {
-          //         router.navigate(['cart-overview'])
-          //       } else if (user.partnerType === 'd') {
-          //         router.navigate(['delivery-overview'])
-          //       }
-          //     }
-          //   }
-          // });
+          this.dataService.getUsers().subscribe(users => {
+            for (let user of users) {
+              if (user.email === this.userEmail) {
+                this.userType = user.partnerType
+                if (this.userType === 'f') {
+                  this.dataService.getFoodCartByEmail(user.email).subscribe((cart) => {
+                    this.partnerID = cart[0].$key;
+                  });
+                } else if (this.userType === 'c') {
+                  this.dataService.getCustomerByEmail(user.email).subscribe((customer) => {
+                    this.partnerID = customer[0].$key;
+                  });
+                } else if (this.userType === 'd') {
+                  this.dataService.getDelivererByEmail(user.email).subscribe((deliverer) => {
+                    this.partnerID = deliverer[0].$key;
+                  });
+                }
+              }
+            }
+          });
 
           console.log(auth);
           console.log("Logged in");

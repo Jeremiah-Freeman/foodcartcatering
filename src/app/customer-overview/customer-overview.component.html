@@ -1,3 +1,70 @@
-<p>
-  customer-overview works!
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <div class="well">
+      <select (change)="setCart($event.target.value)">
+      <option *ngFor="let cart of foodCarts | async" value={{cart.$key}}>{{cart.name}}</option>
+      </select>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Notes</th>
+            <th>Add to Order</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of selectedMenuItems">
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>${{item.price}}</td>
+            <td>
+              <select>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </td>
+            <td><input></td>
+            <td><button class="btn btn-success">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="placeOrder()" class="btn btn-success">Place Order</button>
+
+
+
+
+
+
+    </div>
+    <h1>Current Orders</h1>
+    <div *ngFor="let summary of summaries" class="well">
+      <h1>Requested Delivery Time: {{summary.order.requestedDeliveryTime}}</h1>
+      <h2>Order Details</h2>
+      <div *ngFor="let detail of summary.details" class="row">
+        <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
+        <h2>Notes: {{detail.orderDetail.notes}}</h2>
+      </div>
+    </div>
+    <p>
+      history
+    </p>
+  </div>
+  <div class="col-md-4">
+    <div *ngFor="let cart of foodCarts | async" class="well">
+      <h1>{{cart.name}}</h1>
+      <button class="btn btn-success">Details</button>
+      <button class="btn btn-success">Order From</button>
+    </div>
+  </div>
+</div>
