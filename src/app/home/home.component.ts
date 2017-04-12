@@ -21,13 +21,19 @@ export class HomeComponent implements OnInit {
         console.log(user);
         switch(user[0].partnerType){
           case "c":
-            this.router.navigate(['customer-overview/', user[0].$key])
+            this.dataService.getCustomerByEmail(auth.auth.email).subscribe((customer) => {
+              this.router.navigate(['customer-overview/', customer[0].$key])
+            });
             break;
           case "d":
-            this.router.navigate(['deliverer-overview/', user[0].$key])
+            this.dataService.getDelivererByEmail(auth.auth.email).subscribe((deliverer) => {
+              this.router.navigate(['deliverer-overview/', deliverer[0].$key])
+            });
             break;
           case "f":
-            this.router.navigate(['cart-overview/', user[0].$key])
+            this.dataService.getFoodCartByEmail(auth.auth.email).subscribe((cart) => {
+              this.router.navigate(['cart-overview/', cart[0].$key])
+            });
             break;
           default:
             console.log('no account type found');
