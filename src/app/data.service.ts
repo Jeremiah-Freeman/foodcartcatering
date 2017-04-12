@@ -307,6 +307,15 @@ export class DataService {
     return this.angularFire.database.object('users/' + userId);
   }
 
+  getUserByEmail(email: string) {
+    return this.angularFire.database.list('users/', {
+      query: {
+        orderByChild: "email",
+        equalTo: email
+      }
+    });
+  }
+
   addUser(newUser: User) {
     // Remove unassigned key (Firebase will then create one)
     if (!newUser.$key) {

@@ -21,13 +21,13 @@ const appRoutes: Routes = [
     path: '',
     component: HomeComponent
   }, {
-    path: 'customer-overview',
+    path: 'customer-overview/:id',
     component: CustomerOverviewComponent
   }, {
-    path: 'cart-overview',
+    path: 'cart-overview/:id',
     component: CartOverviewComponent
   }, {
-    path: 'delivery-overview',
+    path: 'delivery-overview/:id',
     component: DeliveryOverviewComponent
   }, {
     path: 'delivery-overview/orders',
