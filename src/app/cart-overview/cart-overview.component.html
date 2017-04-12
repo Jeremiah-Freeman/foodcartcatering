@@ -2,44 +2,19 @@
 <!-- found by navigating to www.foodcartcatering.com/carts/name -->
 
 <!-- navbar component with logo, dashboard, edit account, logout -->
-<div class="row">
-  <app-customer-navbar></app-customer-navbar>
-</div>
 
-<div class="row">
-  <div class="md-col-6">
-    <!-- component looping through order request tiles to be approved -->
-    <app-order-requests></app-order-requests>
-  </div>
-  <div class="md-col-4">
-    <!-- component looping through order tiles prioritized by date.  Pipe to filter view on daily, weekly, monthly -->
-    <app-orders-list> </app-orders-list>
-  </div>
-</div>
-
-<div class="test">
-  <div *ngFor="let summary of summaries">
-    <div class="panel panel-default">
-
-    <p>
-      customer id: {{summary.order.customerID}}
-    </p>
-    <p>
-      revenue: {{summary.revenue}}
-    </p>
-    <hr>
-    <div *ngFor="let detail of summary.details">
-      <p>
-        item: {{detail.menuItem.name}}
-      </p>
-      <p>
-        quantity: {{detail.orderDetail.quantity}}
-      </p>
-      <p>
-        notes: {{detail.orderDetail.notes}}
-      </p>
-      <hr>
+<div *ngFor="let summary of summaries" class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>{{summary.order.orderReadyTime}}</h1>
+      <button class="btn btn-success">Ready</button>
+    </div>
+    <div class="col-md-9">
+      <div *ngFor="let detail of summary.details" class="row">
+        <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
+        <h2>Notes: {{detail.orderDetail.notes}}</h2>
+      </div>
     </div>
   </div>
-  </div>
+
 </div>
