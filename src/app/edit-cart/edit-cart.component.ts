@@ -15,11 +15,9 @@ import { Router } from '@angular/router';
 export class EditCartComponent implements OnInit {
   foodCartId: string = null;
   foodCart;
-<<<<<<< HEAD
-=======
   edit = new FoodCart();
   editValidationMessage = '';
->>>>>>> upstream/master
+
 
   constructor(
     private router: Router,

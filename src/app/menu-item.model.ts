@@ -34,9 +34,6 @@ export class MenuItem {
     if (!this.price) {
       message += (message ? '  ' : '') + 'Price is required.';
     }
-    if (!this.foodCartID) {
-      message += (message ? '  ' : '') + 'Food Cart ID is required.';
-    }
     return message;
   }
 }
