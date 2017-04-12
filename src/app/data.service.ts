@@ -46,7 +46,7 @@ export class DataService {
     return this.angularFire.database.list('customers/', {
       query: {
         orderByChild: "email",
-        equalTo: email
+        equalTo: email,
       }
     });
   }

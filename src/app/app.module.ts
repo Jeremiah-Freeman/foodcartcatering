@@ -39,6 +39,7 @@ import { DeliveryPlanComponent} from './delivery-plan/delivery-plan.component';
 import { AddCartComponent } from './add-cart/add-cart.component';
 import { AddDelivererComponent } from './add-deliverer/add-deliverer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { OrderSortPipe } from './order-sort.pipe';
 
 
 
@@ -82,7 +83,8 @@ export const firebaseConfig = {
     DeliveryPlanComponent,
     AddCartComponent,
     AddDelivererComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    OrderSortPipe
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,7 @@ export class EditCartComponent implements OnInit {
     this.route.params.forEach((urlParameters) => {
       this.foodCartId = urlParameters['id'];
       this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
+        console.log(this.foodCartId);
         this.foodCart = foodCart;
         this.edit.copyFields(this.foodCart);
       });
