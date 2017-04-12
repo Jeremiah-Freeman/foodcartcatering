@@ -406,7 +406,7 @@ export class DataService {
   }
 
   getOrdersSummariesByDelivererId2(summaries, delivererID) {
-    this.getOrdersSummariesByDelivererId(delivererID).subscribe((orders) => {
+    return this.getOrdersSummariesByDelivererId(delivererID).subscribe((orders) => {
       this.summaryBuilder(summaries, orders);
       console.log(orders);
     })
