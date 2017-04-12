@@ -46,7 +46,7 @@ export class DataService {
     return this.angularFire.database.list('customers/', {
       query: {
         orderByChild: "email",
-        equalTo: email
+        equalTo: email,
       }
     });
   }
@@ -134,6 +134,15 @@ export class DataService {
     return this.menuItems;
   }
 
+  getMenuItemsByFoodCartId(foodCartId: string) {
+    return this.angularFire.database.list('/menuItems', {
+      query: {
+        orderByChild: "foodCartID",
+        equalTo: foodCartId
+      }
+    });
+  }
+
   getMenuItemById(menuItemId: string) {
     return this.angularFire.database.object('menuItems/' + menuItemId);
   }
@@ -149,6 +158,17 @@ export class DataService {
   deleteMenuItem(menuItem: MenuItem) {
     const menuItemInFirebase = this.getMenuItemById(menuItem.$key);
     return menuItemInFirebase.remove();
+  }
+
+  updateMenuItem(editMenuItem: MenuItem) {
+    const menuItemInFirebase = this.getMenuItemById(editMenuItem.$key);
+    return menuItemInFirebase.update({
+      name: editMenuItem.name,
+      description: editMenuItem.description,
+      price: editMenuItem.price,
+      rating: editMenuItem.rating,
+      foodCartID: editMenuItem.foodCartID
+    });
   }
 
 

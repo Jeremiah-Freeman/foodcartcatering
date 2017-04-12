@@ -25,10 +25,9 @@ export class CartOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
-      this.foodCartId = urlParameters['id'];
+      this.foodCartId = '0';
       this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
         this.foodCart = foodCart;
-        console.log(this.foodCart);
         this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
       });
     });
