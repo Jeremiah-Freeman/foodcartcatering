@@ -260,6 +260,48 @@ export class DataService {
     return orderInFirebase.remove();
   }
 
+  updateOrder(editOrder: Order) {
+    const orderInFirebase = this.getOrderById(editOrder.$key);
+    return orderInFirebase.update({
+      foodCartID: editOrder.foodCartID,
+      delivererID: editOrder.delivererID,
+      customerID: editOrder.customerID,
+      productionCompletionStatus: editOrder.productionCompletionStatus,
+      deliveryCompletionStatus: editOrder.deliveryCompletionStatus,
+      orderRequestTimestamp: editOrder.orderRequestTimestamp,
+      requestedDeliveryTime: editOrder.requestedDeliveryTime,
+      orderAcceptedTimestamp: editOrder.orderAcceptedTimestamp,
+      deliveryTimeEstimate: editOrder.deliveryTimeEstimate,
+      orderReadyTime: editOrder.orderReadyTime,
+      delayTime: editOrder.delayTime,
+      pickupTimestamp: editOrder.pickupTimestamp,
+      deliveryTimestamp: editOrder.deliveryTimestamp,
+      $key: editOrder.$key
+    });
+  }
+
+  updateOrderPickupTimestamp(editOrder: Order){
+    let dateNow = new Date();
+    let timeStamp = dateNow.getFullYear() + "-" + (dateNow.getMonth()+1) + "-"+dateNow.getMonth()+"T"+ dateNow.getUTCHours()+":"+dateNow.getUTCMinutes ()+":"+dateNow.getUTCSeconds();
+
+    const orderInFirebase = this.getOrderById(editOrder.$key);
+    return orderInFirebase.update({
+
+      pickupTimestamp: timeStamp,
+
+    });
+  }
+  updateOrderDeliveryTimestamp(editOrder: Order){
+    let dateNow = new Date();
+    let timeStamp = dateNow.getFullYear() + "-" + (dateNow.getMonth()+1) + "-"+dateNow.getMonth()+"T"+ dateNow.getUTCHours()+":"+dateNow.getUTCMinutes ()+":"+dateNow.getUTCSeconds();
+
+    const orderInFirebase = this.getOrderById(editOrder.$key);
+    return orderInFirebase.update({
+
+      deliveryTimestamp: timeStamp,
+
+    });
+  }
 
   getOrdersSummariesByFoodCartId(foodCartId: string) {
 
