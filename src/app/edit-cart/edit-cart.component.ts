@@ -17,6 +17,7 @@ export class EditCartComponent implements OnInit {
   foodCart;
   edit = new FoodCart();
   editValidationMessage = '';
+  saved: boolean = false;
 
 
   constructor(
@@ -28,12 +29,30 @@ export class EditCartComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
       this.foodCartId = urlParameters['id'];
-      this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
-        console.log(this.foodCartId);
-        this.foodCart = foodCart;
-        this.edit.copyFields(this.foodCart);
-      });
     });
+
+    this.dataService.getFoodCartById(this.foodCartId).subscribe((emittedData) => {
+      this.foodCart = new FoodCart(
+        emittedData.lat,
+        emittedData.lon,
+        emittedData.address,
+        emittedData.instructions,
+        emittedData.quadrantID,
+        emittedData.name,
+        emittedData.number,
+        emittedData.email,
+        emittedData.open,
+        emittedData.close,
+        emittedData.maximumOrderSize,
+        emittedData.$key
+      );
+      this.edit.copyFields(this.foodCart);
+      console.log(emittedData);
+    });
+      // promise.then((success) => {
+      //   console.log(success);
+      //   this.edit.copyFields(this.foodCart);
+      // });
   }
 
   updateFoodCart(){
@@ -42,7 +61,11 @@ export class EditCartComponent implements OnInit {
       const promise = this.dataService.updateFoodCart(this.edit);
       promise.then((success) => {
         // add id to this route to show specific delivery page
-        this.router.navigate(['cart-overview/'], this.foodCartId);
+        // this.router.navigate(['cart-overview/', this.foodCartId]);
+        this.saved = true;
+        setTimeout(() => {
+          this.saved = false;
+        }, 2000)
       }).catch((failure) => {
         console.log('Cart save failed');
       });

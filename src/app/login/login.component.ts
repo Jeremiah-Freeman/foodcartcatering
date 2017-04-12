@@ -32,8 +32,29 @@ export class LoginComponent implements OnInit {
 
   loginWithEmail(email,password) {
     this.authService.loginWithEmail(email,password).then((data) => {
-      console.log('success');
-      this.router.navigate(['']);
+      console.log(data);
+      this.dataService.getUserByEmail(data.auth.email).subscribe((user) => {
+        console.log(user);
+        switch(user[0].partnerType){
+          case "c":
+            this.dataService.getCustomerByEmail(data.auth.email).subscribe((customer) => {
+              this.router.navigate(['customer-overview/', customer[0].$key])
+            });
+            break;
+          case "d":
+            this.dataService.getDelivererByEmail(data.auth.email).subscribe((deliverer) => {
+              this.router.navigate(['delivery-overview/', deliverer[0].$key])
+            });
+            break;
+          case "f":
+            this.dataService.getFoodCartByEmail(data.auth.email).subscribe((cart) => {
+              this.router.navigate(['cart-overview/', cart[0].$key])
+            });
+            break;
+          default:
+            console.log('no account type found');
+        }
+      });
     })
   }
 

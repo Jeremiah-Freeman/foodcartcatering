@@ -16,23 +16,34 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.authService.af.auth.subscribe((auth) => {
+      if (auth) {
+
       console.log(auth);
       this.dataService.getUserByEmail(auth.auth.email).subscribe((user) => {
         console.log(user);
         switch(user[0].partnerType){
           case "c":
-            this.router.navigate(['customer-overview/', user[0].$key])
+            this.dataService.getCustomerByEmail(auth.auth.email).subscribe((customer) => {
+              this.router.navigate(['customer-overview/', customer[0].$key])
+            });
             break;
           case "d":
-            this.router.navigate(['deliverer-overview/', user[0].$key])
+            this.dataService.getDelivererByEmail(auth.auth.email).subscribe((deliverer) => {
+              this.router.navigate(['delivery-overview/', deliverer[0].$key])
+            });
             break;
           case "f":
-            this.router.navigate(['cart-overview/', user[0].$key])
+            this.dataService.getFoodCartByEmail(auth.auth.email).subscribe((cart) => {
+              this.router.navigate(['cart-overview/', cart[0].$key])
+            });
             break;
           default:
             console.log('no account type found');
         }
       });
+    } else {
+      this.router.navigate(['login']);
+    }
     });
   }
 
