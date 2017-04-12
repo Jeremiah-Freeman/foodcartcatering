@@ -24,17 +24,6 @@ export class DeliveryPlanComponent implements OnInit {
     this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
     console.log(this.summaries);
 
-    // promise.then((response) => {
-    //   // populates locations
-    //   for(let i=0; i<this.summaries.length; i++){
-    //     this.locations.push([this.summaries[i].foodCart.lat, this.summaries[i].foodCart.lon],[this.summaries[i].customer.lat, this.summaries[i].customer.lon]);
-    //
-    //     console.log(this.locations)
-    //     this.locationsArrived = true;
-    //     return this.locations
-    //   }
-    // });
   }
 
-  //www.google.com/maps/dir/45.444683,-122.677194/45.520425,-122.676819/45.517801,-122.618808/
 }

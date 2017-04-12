@@ -44,7 +44,6 @@ import { OrderSortPipe } from './order-sort.pipe';
 
 
 
-
 export const firebaseConfig = {
   apiKey: masterApiKeys.apiKey,
   authDomain: masterApiKeys.authDomain,
@@ -86,7 +85,8 @@ export const firebaseConfig = {
     AddCartComponent,
     AddDelivererComponent,
     AddCustomerComponent,
-    OrderSortPipe
+    OrderSortPipe,
+
   ],
   imports: [
     BrowserModule,
