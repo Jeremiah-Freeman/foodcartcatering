@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
           console.log('no account type found');
       }
 
-    })
+    });
   }
 
 

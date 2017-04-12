@@ -3,6 +3,7 @@ export class Deliverer {
     public lat = '',
     public lon = '',
     public instructions = '',
+    // TODO probably not necessary
     public quadrantID = '',
     public name = '',
     public number = '',

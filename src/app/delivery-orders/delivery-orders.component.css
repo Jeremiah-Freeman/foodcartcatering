@@ -1,0 +1,9 @@
+.pickup {
+  background-color: lightgreen;
+}
+.delivery {
+  background-color: lightblue;
+}
+button {
+  margin-left: 15px;
+}

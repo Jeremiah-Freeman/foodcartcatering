@@ -1,3 +1,15 @@
-<p>
-  deliverer-edit works!
-</p>
+<h1>Edit Your Profile</h1>
+
+<label>Name</label>
+<input [(ngModel)]="edit.name" placeholder="{{deliverer.name}}">
+<label>Phone Number</label>
+<input [(ngModel)]="edit.number" placeholder="{{deliverer.number}}">
+<label>Email</label>
+<input [(ngModel)]="edit.email" placeholder="{{deliverer.email}}">
+
+<br>
+<input *ngIf='editValidationMessage' [(ngModel)]="editValidationMessage" disabled>
+<br>
+
+
+<button (click)="updateDeliverer()">Save Profile</button>

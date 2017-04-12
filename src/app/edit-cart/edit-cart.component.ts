@@ -15,6 +15,11 @@ import { Router } from '@angular/router';
 export class EditCartComponent implements OnInit {
   foodCartId: string = null;
   foodCart;
+<<<<<<< HEAD
+=======
+  edit = new FoodCart();
+  editValidationMessage = '';
+>>>>>>> upstream/master
 
   constructor(
     private router: Router,
@@ -27,9 +32,22 @@ export class EditCartComponent implements OnInit {
       this.foodCartId = urlParameters['id'];
       this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
         this.foodCart = foodCart;
-        console.log(this.foodCart);
+        this.edit.copyFields(this.foodCart);
       });
     });
+  }
+
+  updateFoodCart(){
+    this.editValidationMessage = this.edit.validationMessage();
+    if(!this.editValidationMessage){
+      const promise = this.dataService.updateFoodCart(this.edit);
+      promise.then((success) => {
+        // add id to this route to show specific delivery page
+        this.router.navigate(['cart-overview']);
+      }).catch((failure) => {
+        console.log('Cart save failed');
+      });
+    }
   }
 
 }
