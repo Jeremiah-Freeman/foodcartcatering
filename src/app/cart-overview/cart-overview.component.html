@@ -2,22 +2,31 @@
 <!-- found by navigating to www.foodcartcatering.com/carts/name -->
 
 <!-- navbar component with logo, dashboard, edit account, logout -->
+<div class="container">
 
 <div *ngFor="let summary of summaries | orderComplete:'incomplete'" class="well">
   <div class="row">
     <div class="col-md-3">
-      <h1>{{summary.order.orderReadyTime}}</h1>
+
+      <h3>{{summary.order.orderReadyTime}}</h3>
+      <div >
+      <a class="buttons" href="#" class="btn btn-block btn-lg btn-success">accept</a>
+    </div>
+
     </div>
     <button (click)="orderCompleted(summary.order)"class="btn btn-success">Ready</button>
     <div class="col-md-9">
       <div *ngFor="let detail of summary.details" class="row">
         <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
-        <h2>Notes: {{detail.orderDetail.notes}}</h2>
+        <h3>Notes:</h3> <h4>{{detail.orderDetail.notes}}</h4>
+        <hr>
+
       </div>
     </div>
   </div>
 
 </div>
+
 
 <div *ngFor="let summary of summaries | orderComplete:'complete'">
 
@@ -30,4 +39,5 @@
   </div>
 
 </div>
+
 </div>
