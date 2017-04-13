@@ -275,8 +275,7 @@ export class DataService {
       orderReadyTime: editOrder.orderReadyTime,
       delayTime: editOrder.delayTime,
       pickupTimestamp: editOrder.pickupTimestamp,
-      deliveryTimestamp: editOrder.deliveryTimestamp,
-      $key: editOrder.$key
+      deliveryTimestamp: editOrder.deliveryTimestamp
     });
   }
 
@@ -479,7 +478,6 @@ export class DataService {
   getOrdersSummariesByDelivererId2(summaries, delivererID) {
     return this.getOrdersSummariesByDelivererId(delivererID).subscribe((orders) => {
       this.summaryBuilder(summaries, orders);
-      console.log(orders);
     })
   }
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
 // import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 
@@ -13,10 +17,17 @@ export class DeliveryOrdersComponent implements OnInit {
   public summaries = []; //: FirebaseListObservable<any[]>;
   public delivererID = '1';
 
-  constructor(public dataService: DataService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
+    this.route.params.forEach((urlParameters) => {
+      this.delivererID = urlParameters['id'];
+      this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
+    });
   }
 
   updatePickUpTime(orderToUpdate){

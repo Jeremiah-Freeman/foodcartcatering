@@ -39,7 +39,8 @@ export class CartOverviewComponent implements OnInit {
     order.productionCompletionStatus = true;
     const promise = this.dataService.updateOrder(order);
     promise.then((success) => {
-      console.log('order ready')
+      this.summaries = [];
+      this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
     });
   }
 }
