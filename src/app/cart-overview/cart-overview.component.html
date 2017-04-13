@@ -9,12 +9,11 @@
     <div class="col-md-3">
 
       <h3>{{summary.order.orderReadyTime}}</h3>
-      <div >
+      <div class="acceptButton" >
       <a class="buttons" href="#" class="btn btn-block btn-lg btn-success">accept</a>
     </div>
 
     </div>
-    <button (click)="orderCompleted(summary.order)"class="btn btn-success">Ready</button>
     <div class="col-md-9">
       <div *ngFor="let detail of summary.details" class="row">
         <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
@@ -22,6 +21,7 @@
         <hr>
 
       </div>
+      <button (click)="orderCompleted(summary.order)" class="btn btn-success readyButton">ready</button>
     </div>
   </div>
 
