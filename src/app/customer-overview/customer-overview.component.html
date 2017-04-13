@@ -35,7 +35,7 @@
                 <option value="7">7</option>
               </select>
             </td>
-            <td><input></td>
+            <td><input (change)="setMenuItemNotes(item, $event.target.value)"></td>
             <td><button class="btn btn-success">Add</button></td>
           </tr>
         </tbody>

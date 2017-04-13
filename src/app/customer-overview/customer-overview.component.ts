@@ -63,6 +63,15 @@ export class CustomerOverviewComponent implements OnInit {
     }
   }
 
+  setMenuItemNotes(item: MenuItem , notes) {
+    console.log(notes);
+    for (var i = 0; i < this.selectedMenuItems.length; i++) {
+      if (item.$key === this.selectedMenuItems[i].$key) {
+        this.selectedMenuItems[i].notes = notes;
+      }
+    }
+  }
+
   placeOrder() {
     this.order.customerID = this.customerId;
     this.order.foodCartID = this.selectedFoodCart.$key;
@@ -81,7 +90,7 @@ export class CustomerOverviewComponent implements OnInit {
           const newDetail = new OrderDetail(
             order.key,
             this.selectedMenuItems[i].$key,
-            '',
+            this.selectedMenuItems[i].notes,
             this.selectedMenuItems[i].quantity
           );
           this.dataService.addOrderDetail(newDetail);
