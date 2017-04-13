@@ -1,31 +1,35 @@
-<div class="container">
+<!-- <div class="container">
   <div>
     <h1>Login With Google</h1>
     <button class="btn btn-default" (click)="loginWithGoogle()">Login With Google</button>
   </div>
-</div>
+</div> -->
 <div class="container">
   <div>
+    <form>
     <h1>Login With Email</h1>
     <label>email:</label>
     <input #email value="">
     <label>password:</label>
-    <input #password value="">
-    <button class="btn btn-default" (click)="loginWithEmail(email.value, password.value)">Login with email</button>
+    <input type="password" #password value="">
+    <button type="submit" class="btn btn-default" (click)="loginWithEmail(email.value, password.value)">Login with email</button>
+  </form>
   </div>
 </div>
 <div class="container">
   <div>
+    <form>
     <h1>Sign up</h1>
     <label>email:</label>
-    <input #newEmail value="">
+    <input  #newEmail value="">
     <label>password:</label>
-    <input #newPassword value="">
+    <input type="password" #newPassword value="">
     <select #newAccountType>
       <option value="c">Customer</option>
       <option value="f">Food Cart</option>
       <option value="d">Deliverer</option>
     </select>
-    <button class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">Signup with email</button>
+    <button type="submit" class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">Signup with email</button>
+  </form>
   </div>
 </div>
