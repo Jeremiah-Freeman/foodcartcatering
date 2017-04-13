@@ -7,8 +7,8 @@
   <div class="row">
     <div class="col-md-3">
       <h1>{{summary.order.orderReadyTime}}</h1>
-      <button class="btn btn-success">Ready</button>
     </div>
+    <button (click)="orderCompleted(summary.order)"class="btn btn-success">Ready</button>
     <div class="col-md-9">
       <div *ngFor="let detail of summary.details" class="row">
         <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>

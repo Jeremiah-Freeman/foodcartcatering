@@ -161,6 +161,7 @@ export class DataService {
   }
 
   updateMenuItem(editMenuItem: MenuItem) {
+    console.log(editMenuItem);
     const menuItemInFirebase = this.getMenuItemById(editMenuItem.$key);
     return menuItemInFirebase.update({
       name: editMenuItem.name,
@@ -261,6 +262,7 @@ export class DataService {
   }
 
   updateOrder(editOrder: Order) {
+    console.log(editOrder);
     const orderInFirebase = this.getOrderById(editOrder.$key);
     return orderInFirebase.update({
       foodCartID: editOrder.foodCartID,
@@ -275,8 +277,7 @@ export class DataService {
       orderReadyTime: editOrder.orderReadyTime,
       delayTime: editOrder.delayTime,
       pickupTimestamp: editOrder.pickupTimestamp,
-      deliveryTimestamp: editOrder.deliveryTimestamp,
-      $key: editOrder.$key
+      deliveryTimestamp: editOrder.deliveryTimestamp
     });
   }
 
@@ -436,8 +437,6 @@ export class DataService {
             let quantity = parseInt(summaries[i].details[j].orderDetail.quantity);
             // generate revenue for detail and add to total revenue
             summaries[i].revenue += quantity * item.price;
-            console.log(summaries[i].revenue);
-            console.log(summaries);
           });
         }
       });
