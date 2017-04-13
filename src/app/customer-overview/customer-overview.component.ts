@@ -76,10 +76,18 @@ export class CustomerOverviewComponent implements OnInit {
     this.order.customerID = this.customerId;
     this.order.foodCartID = this.selectedFoodCart.$key;
 
-    // this.editValidationMessage = this.order.validationMessage();
-    // if (!this.editValidationMessage) {
-    //
-    // }
+    // Validation
+    this.editValidationMessage = 'Cart, item(s) and delivery date and time are required.';
+    if (!this.order.requestedDeliveryTime) {
+      return;
+    }
+    for (var i = 0; i < this.selectedMenuItems.length; i++) {
+      if (this.selectedMenuItems[i].quantity) {
+        this.editValidationMessage = '';
+      }
+    }
+
+
 
     const promise = this.dataService.addOrder(this.order);
     promise.then((order) => {
