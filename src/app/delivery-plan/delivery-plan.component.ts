@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delivery-plan',
@@ -16,10 +19,19 @@ export class DeliveryPlanComponent implements OnInit {
   public locations = [];
   public locationsArrived = false;
   public routeCall: string;
-  public delivererID = '1';
-  constructor(public dataService: DataService) { }
+  public delivererID="1";
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    private dataService: DataService) { }
 
   ngOnInit() {
+
+    this.route.params.forEach((urlParameters) => {
+      this.delivererID = urlParameters['id'];
+    });
 
     this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
     console.log(this.summaries);
