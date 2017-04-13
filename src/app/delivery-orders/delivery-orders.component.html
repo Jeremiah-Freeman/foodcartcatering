@@ -1,7 +1,7 @@
 <h1>Orders to Deliver</h1>
 <div class="container">
-  <div *ngFor="let summary of summaries" class="well">
-    <div *ngIf="!summary.order.deliveryTimestamp">
+  <div *ngFor="let summary of summaries">
+    <div *ngIf="!summary.order.deliveryTimestamp" class="well">
 
       <div class="row">
         <div class="col-xs-6">
@@ -41,8 +41,8 @@
 </div>
 <h1>Delivered Orders</h1>
 <div class="container">
-  <div *ngFor="let summary of summaries" class="well">
-    <div *ngIf="summary.order.deliveryTimestamp">
+  <div *ngFor="let summary of summaries">
+    <div *ngIf="summary.order.deliveryTimestamp" class="well">
 
       <div class="row">
         <div class="col-xs-6">

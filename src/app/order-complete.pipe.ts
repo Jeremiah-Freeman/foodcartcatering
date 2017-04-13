@@ -9,7 +9,6 @@ export class OrderCompletePipe implements PipeTransform {
 
   transform(input, sortOn) {
     if (input) {
-      console.log(sortOn);
       const output: any[] = [];
       if (sortOn === 'incomplete'){
 

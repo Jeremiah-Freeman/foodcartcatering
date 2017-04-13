@@ -1,11 +1,13 @@
+<div class="container">
+
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12  ">
     <div class="well">
       <select (change)="setCart($event.target.value)">
       <option value="">Choose Cart</option>
       <option *ngFor="let cart of foodCarts | async" value={{cart.$key}}>{{cart.name}}</option>
       </select>
-      <table class="table table-striped">
+      <table class="table" >
         <thead>
           <tr>
             <th>Name</th>
@@ -13,7 +15,6 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Notes</th>
-            <th>Add to Order</th>
 
           </tr>
         </thead>
@@ -36,7 +37,6 @@
               </select>
             </td>
             <td><input (change)="setMenuItemNotes(item, $event.target.value)"></td>
-            <td><button class="btn btn-success">Add</button></td>
           </tr>
         </tbody>
       </table>
@@ -46,12 +46,12 @@
       <textarea value="{{customer?.address}}" readonly rows= 4></textarea>
       <br>
       <label for="requestedDeliveryTime">Delivery Date and Time</label>
-      <input type="datetime-local" [(ngModel)]="order.requestedDeliveryTime">
+      <input  type="datetime-local" [(ngModel)]="order.requestedDeliveryTime">
       <br>
       <hr>
       <input *ngIf='editValidationMessage' [(ngModel)]="editValidationMessage" disabled>
       <br>
-      <button (click)="placeOrder()" class="btn btn-success">Place Order</button>
+      <button (click)="placeOrder()" class="btn btn-info">Place Order</button>
 
 
 
@@ -59,15 +59,29 @@
 
 
     </div>
-    <h1>Current Orders</h1>
-    <div *ngFor="let summary of summaries" class="well">
-      <h1>Requested Delivery Time: {{summary.order.requestedDeliveryTime}}</h1>
-      <h2>Order Details</h2>
-      <div *ngFor="let detail of summary.details" class="row">
-        <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
-        <h2>Notes: {{detail.orderDetail.notes}}</h2>
+    <div *ngIf="(summaries | orderComplete:'incomplete').length === 0">
+      <h1>No Pending Orders</h1>
+    </div>
+    <div *ngIf="(summaries | orderComplete:'incomplete').length != 0">
+      <h1>Current Orders</h1>
+      <div *ngFor="let summary of summaries | orderComplete:'incomplete'" class="well">
+        <h1>Requested Delivery Time: {{summary.order.requestedDeliveryTime}}</h1>
+        <h2>Order Details</h2>
+        <div *ngFor="let detail of summary.details" class="row">
+          <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
+          <h2>Notes: {{detail.orderDetail.notes}}</h2>
+        </div>
       </div>
     </div>
+    <br>
+    <hr>
+    <br>
+    <h2>Order History</h2>
+    <div *ngFor="let summary of summaries | orderComplete:'complete'" class="well">
+      <h3 *ngFor="let detail of summary.details">{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h3>
+      <h3>were delivered on {{summary.order.deliveryTimestamp}}</h3>
+    </div>
+
     <!-- <p>
       history
     </p>
@@ -75,8 +89,10 @@
   <div class="col-md-4">
     <div *ngFor="let cart of foodCarts | async" class="well">
       <h1>{{cart.name}}</h1>
-      <button class="btn btn-success">Details</button>
-      <button class="btn btn-success">Order From</button>
+      <button class="btn btn-info">Details</button>
+      <button class="btn btn-info">Order From</button>
     </div>
   </div>
 </div> -->
+</div>
+</div>
