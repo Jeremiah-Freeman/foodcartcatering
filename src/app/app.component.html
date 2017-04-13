@@ -15,7 +15,7 @@
         <div *ngIf="userType === 'f'">
           <li class="navText"><a routerLink="edit-cart/{{partnerID}}">edit</a></li>
           <li class="navText"><a routerLink='cart-overview/{{partnerID}}'>home</a></li>
-          <li><a (click)='logOut()'>logout</a></li>
+          <li><a (click)='logOut()'>Logout</a></li>
         </div>
         <div *ngIf="userType === 'c'">
           <li><a routerLink="customer-edit/{{partnerID}}">Account</a></li>
