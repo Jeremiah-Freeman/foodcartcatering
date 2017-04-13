@@ -16,7 +16,8 @@
   padding-top: 24px;
 }
 
- body {
-   font-family: 'Roboto', sans-serif;
+ .body {
+   font-family: 'Raleway', sans-serif;
+   letter-spacing: .5px;
 
  }
