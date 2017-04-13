@@ -21,15 +21,15 @@
 <div class="col-md-12">
 
 <h3> Personal info </h3>
-<!-- <label>Name</label> -->
+<label>Name</label>
 <input class="form-control" [(ngModel)]="edit.name" placeholder="{{foodCart?.name}}"><br>
-<!-- <label>Phone Number</label> -->
+<label>Phone Number</label>
 <input class="form-control" [(ngModel)]="edit.number" placeholder="{{foodCart?.number}}"><br>
-<!-- <label>Email</label> -->
+<label>Email</label>
 <input class="form-control" [(ngModel)]="edit.email" placeholder="{{foodCart?.email}}"><br>
-<!-- <label>Address</label> -->
+<label>Address</label>
 <textarea rows="4" cols="50" class="form-control" [(ngModel)]="edit.address" placeholder="{{foodCart?.address}}"></textarea><br>
-<!-- <label>Maximim Order Size</label> -->
+<label>Maximim Order Size</label>
 <input class="form-control" [(ngModel)]="edit.maximumOrderSize" placeholder="{{foodCart?.maximumOrderSize}}"><br>
 
 <button class="btn btn-info btn-sm"(click)="updateFoodCart()">save</button>
