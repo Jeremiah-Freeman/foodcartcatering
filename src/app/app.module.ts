@@ -42,6 +42,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { OrderSortPipe } from './order-sort.pipe';
 import { OrderCompletePipe } from './order-complete.pipe';
+import { OrderDeliveredPipe } from './order-delivered.pipe';
 
 
 
@@ -88,6 +89,7 @@ export const firebaseConfig = {
     AddCustomerComponent,
     OrderSortPipe,
     OrderCompletePipe,
+    OrderDeliveredPipe,
 
   ],
   imports: [
