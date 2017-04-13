@@ -47,13 +47,13 @@
 
       <label>Delivery Address:</label>
       <br>
-      <textarea value="{{customer?.address}}" readonly rows= 4></textarea>
+      <textarea value="{{customer?.address}}" class="form-control" readonly rows= 4></textarea>
       <br>
       <label for="requestedDeliveryTime">Delivery Date and Time</label>
       <input  type="datetime-local" [(ngModel)]="order.requestedDeliveryTime">
       <br>
       <hr>
-      <input *ngIf='editValidationMessage' [(ngModel)]="editValidationMessage" disabled>
+      <input *ngIf='editValidationMessage' [(ngModel)]="editValidationMessage" class="form-control" disabled>
       <br>
       <button (click)="placeOrder()" class="btn btn-info">Place Order</button>
 
