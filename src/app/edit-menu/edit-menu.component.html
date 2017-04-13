@@ -1,5 +1,6 @@
 <div class="col-md-6">
-  <table class="table table-striped">
+  <h3>Current menu items</h3>
+  <table class="table">
     <thead>
       <tr>
         <th>Name</th>
@@ -7,17 +8,17 @@
         <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
+        <hr>
       </tr>
     </thead>
     <tbody>
-
 
         <tr *ngFor="let item of menuItems | async">
           <td>{{item.name}}</td>
           <td>{{item.description}}</td>
           <td>${{item.price}}</td>
-          <td><button (click)="editMenuItem(item);" class="btn btn-xs btn-info">Edit</button></td>
-          <td><button (click)="deleteMenuItem(item);" class="btn btn-xs btn-danger">Delete</button></td>
+          <td><button (click)="editMenuItem(item);" class="btn btn-xs btn-info menueEditButton">Edit</button></td>
+          <td><button (click)="deleteMenuItem(item);" class="btn btn-xs btn-danger menuDeleteButton">Delete</button></td>
         </tr>
 
     </tbody>
@@ -26,7 +27,7 @@
 
 <div class="col-md-6">
   <div class="form-group">
-    <h3 *ngIf="newForm">Enter a New Menu Item:</h3>
+    <h3 *ngIf="newForm">Add Item</h3>
     <h3 *ngIf="editForm">Edit this Menu Item?</h3>
     <h3 *ngIf="deleteForm">Delete this Menu Item?</h3>
 
@@ -49,12 +50,12 @@
       <tbody>
         <tr>
           <td class="text-left">
-            <button *ngIf="newForm" (click)="saveNewMenuItem();" class="btn btn-primary">Save New Menu Item</button>
-            <button *ngIf="editForm" (click)="updateMenuItem();" class="btn btn-primary">Update Menu Item</button>
-            <button *ngIf="deleteForm" (click)="deleteMenuItemConfirmed();" class="btn btn-danger">Confirm Deletion</button>
+            <button *ngIf="newForm" (click)="saveNewMenuItem();" class="btn btn-primary saveMenuButton">Save New Menu Item</button>
+            <button *ngIf="editForm" (click)="updateMenuItem();" class="btn btn-primary updateMenu">Update Menu Item</button>
+            <button *ngIf="deleteForm" (click)="deleteMenuItemConfirmed();" class="btn btn-danger confirmDeleteButton">Confirm Deletion</button>
           </td>
           <td class="text-right">
-            <button (click)="resetForm();" class="btn btn-warning">Cancel</button>
+            <button (click)="resetForm();" class="btn btn-warning cancelButton">Cancel</button>
           </td>
         </tr>
       </tbody>
