@@ -14,15 +14,8 @@ export class DeliveryRequestsComponent implements OnInit {
 
   ngOnInit() {
 
-    // gets all foodCarts and then gets summaries for all foodCarts.
-    let promise = this.dataService.getFoodCarts().subscribe((data)=>{
-      for(let i=0; i<data.length; i++){
-        this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, data[i].$key);
-      }
-      console.log(data);
-    });
+    this.dataService.getOrdersSummariesByUnassignedDeliverer2(this.summaries);
 
-    // this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartID);
     console.log(this.summaries);
   }
 

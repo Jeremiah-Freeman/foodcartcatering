@@ -6,19 +6,20 @@
         <div class="pickup">
           <h5>pick up: </h5>
           <h4><strong>{{summary.foodCart.name}}</strong></h4>
-            <p>address: <br> {{summary.foodCart.address}}</p><br>
-            <p>pickup time: <br> {{summary.order.orderReadyTime}}</p><br>
-          <button class="btn btn-danger">Deny Request</button>
+          <p>address: <br> {{summary.foodCart.address}}</p><br>
+          <p>pickup time: <br> {{summary.order.orderReadyTime}}</p><br>
+          <button class="btn btn-success" (click)="acceptDeliveryRequest(summary.order)">Accept Request</button>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="delivery">
-            <h5>delivery:</h5>
-            <h4><strong>{{summary.customer.name}}</strong></h4>
-              <p>address:<br> {{summary.customer.address}}</p>
-              <p>delivery time:<br> {{summary.order.requestedDeliveryTime | date:'shortTime'}}</p>
-              <p>price: ${{summary.revenue}}</p>
-          <button class="btn btn-success">Accept Request</button>
+          <h5>delivery:</h5>
+          <h4><strong>{{summary.customer.name}}</strong></h4>
+          <p>address:<br> {{summary.customer.address}}</p>
+          <p>delivery time:<br> {{summary.order.requestedDeliveryTime}}</p>
+          <p>price: ${{summary.revenue}}</p>
+          <!-- TODO functionality to hide requests. -->
+          <!-- <button class="btn btn-danger">Deny Request</button> -->
         </div>
       </div>
     </div>
