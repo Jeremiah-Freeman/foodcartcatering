@@ -161,7 +161,6 @@ export class DataService {
   }
 
   updateMenuItem(editMenuItem: MenuItem) {
-    console.log(editMenuItem);
     const menuItemInFirebase = this.getMenuItemById(editMenuItem.$key);
     return menuItemInFirebase.update({
       name: editMenuItem.name,
@@ -262,7 +261,6 @@ export class DataService {
   }
 
   updateOrder(editOrder: Order) {
-    console.log(editOrder);
     const orderInFirebase = this.getOrderById(editOrder.$key);
     return orderInFirebase.update({
       foodCartID: editOrder.foodCartID,
@@ -277,7 +275,8 @@ export class DataService {
       orderReadyTime: editOrder.orderReadyTime,
       delayTime: editOrder.delayTime,
       pickupTimestamp: editOrder.pickupTimestamp,
-      deliveryTimestamp: editOrder.deliveryTimestamp
+      deliveryTimestamp: editOrder.deliveryTimestamp,
+      $key: editOrder.$key
     });
   }
 
@@ -294,8 +293,8 @@ export class DataService {
     });
   }
   updateOrderDeliveryTimestamp(editOrder: Order){
-    let dateNow = new Date();
     // NOTE GMT TIME
+    let dateNow = new Date();
     let timeStamp = dateNow.getFullYear() + "-" + (dateNow.getMonth()+1) + "-"+dateNow.getMonth()+"T"+ dateNow.getUTCHours()+":"+dateNow.getUTCMinutes ()+":"+dateNow.getUTCSeconds();
 
     const orderInFirebase = this.getOrderById(editOrder.$key);
@@ -313,6 +312,16 @@ export class DataService {
       query: {
         orderByChild: "foodCartID",
         equalTo: foodCartId
+      }
+    });
+  }
+
+  getOrdersSummariesByUnassignedDeliverer() {
+
+    return this.angularFire.database.list('/orders', {
+      query: {
+        orderByChild: "delivererID",
+        equalTo: ''
       }
     });
   }
@@ -395,6 +404,12 @@ export class DataService {
     return userInFirebase.remove();
   }
 
+  tScrubber(inputDateTime = '') {
+    if (inputDateTime.substring(10, 11) === 'T') {
+      inputDateTime = inputDateTime.substring(0, 10) + ' ' + inputDateTime.substring(12);
+    }
+    return inputDateTime;
+  }
 
   // Aggregator Functions
   // pass in the empty summaries array and list of orders
@@ -413,6 +428,16 @@ export class DataService {
           summaries[i].customer.copyFields(customer);
         });
       }
+
+      // Remove T from time stamps to enable ng2 date filter to work
+      summaries[i].order.orderRequestTimestamp = this.tScrubber(summaries[i].order.orderRequestTimestamp);
+      summaries[i].order.requestedDeliveryTime = this.tScrubber(summaries[i].order.requestedDeliveryTime);
+      summaries[i].order.orderAcceptedTimestamp = this.tScrubber(summaries[i].order.orderAcceptedTimestamp);
+      summaries[i].order.deliveryTimeEstimate = this.tScrubber(summaries[i].order.deliveryTimeEstimate);
+      summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
+      summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
+      summaries[i].order.deliveryTimestamp = this.tScrubber(summaries[i].order.deliveryTimestamp);
+
 
       if (delivererID) {
         this.getDelivererById(delivererID).subscribe((deliverer) => {
@@ -437,6 +462,8 @@ export class DataService {
             let quantity = parseInt(summaries[i].details[j].orderDetail.quantity);
             // generate revenue for detail and add to total revenue
             summaries[i].revenue += quantity * item.price;
+            // console.log(summaries[i].revenue);
+            // console.log(summaries);
           });
         }
       });
@@ -462,7 +489,11 @@ export class DataService {
     })
   }
 
-
+  getOrdersSummariesByUnassignedDeliverer2(summaries) {
+    this.getOrdersSummariesByUnassignedDeliverer().subscribe((orders) => {
+      this.summaryBuilder(summaries, orders);
+    })
+  }
 
 
 }
