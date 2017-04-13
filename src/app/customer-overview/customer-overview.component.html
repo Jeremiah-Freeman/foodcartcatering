@@ -13,7 +13,7 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Notes</th>
-            <th>Add to Order</th>
+            <!-- <th>Add to Order</th> -->
 
           </tr>
         </thead>
@@ -36,7 +36,7 @@
               </select>
             </td>
             <td><input (change)="setMenuItemNotes(item, $event.target.value)"></td>
-            <td><button class="btn btn-success">Add</button></td>
+            <!-- <td><button class="btn btn-success">Add</button></td> -->
           </tr>
         </tbody>
       </table>
@@ -59,15 +59,29 @@
 
 
     </div>
-    <h1>Current Orders</h1>
-    <div *ngFor="let summary of summaries" class="well">
-      <h1>Requested Delivery Time: {{summary.order.requestedDeliveryTime}}</h1>
-      <h2>Order Details</h2>
-      <div *ngFor="let detail of summary.details" class="row">
-        <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
-        <h2>Notes: {{detail.orderDetail.notes}}</h2>
+    <div *ngIf="(summaries | orderComplete:'incomplete').length === 0">
+      <h1>No Pending Orders</h1>
+    </div>
+    <div *ngIf="(summaries | orderComplete:'incomplete').length != 0">
+      <h1>Current Orders</h1>
+      <div *ngFor="let summary of summaries | orderComplete:'incomplete'" class="well">
+        <h1>Requested Delivery Time: {{summary.order.requestedDeliveryTime}}</h1>
+        <h2>Order Details</h2>
+        <div *ngFor="let detail of summary.details" class="row">
+          <h1>{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h1>
+          <h2>Notes: {{detail.orderDetail.notes}}</h2>
+        </div>
       </div>
     </div>
+    <br>
+    <hr>
+    <br>
+    <h2>Order History</h2>
+    <div *ngFor="let summary of summaries | orderComplete:'complete'" class="well">
+      <h3 *ngFor="let detail of summary.details">{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h3>
+      <h3>were delivered on {{summary.order.deliveryTimestamp}}</h3>
+    </div>
+
     <!-- <p>
       history
     </p>

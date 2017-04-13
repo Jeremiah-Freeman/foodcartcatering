@@ -28,6 +28,7 @@ export class CartOverviewComponent implements OnInit {
     this.route.params.forEach((urlParameters) => {
       this.foodCartId = urlParameters['id'];
       this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
+        console.log(foodCart);
         this.foodCart = foodCart;
         this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
       });
@@ -38,9 +39,14 @@ export class CartOverviewComponent implements OnInit {
     console.log(order);
     order.productionCompletionStatus = true;
     const promise = this.dataService.updateOrder(order);
-    promise.then((success) => {
-      this.summaries = [];
-      this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
-    });
+    // promise.then((success) => {
+    //   this.summaries = [];
+    //   this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
+    // });
+  }
+
+  acceptOrder(order) {
+    console.log(order);
+    order.accepted = true;
   }
 }
