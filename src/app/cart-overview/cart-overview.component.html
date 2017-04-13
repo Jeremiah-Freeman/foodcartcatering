@@ -3,7 +3,7 @@
 
 <!-- navbar component with logo, dashboard, edit account, logout -->
 
-<div *ngFor="let summary of summaries | orderComplete" class="well">
+<div *ngFor="let summary of summaries | orderComplete:'incomplete'" class="well">
   <div class="row">
     <div class="col-md-3">
       <h1>{{summary.order.orderReadyTime}}</h1>
@@ -17,4 +17,17 @@
     </div>
   </div>
 
+</div>
+
+<div *ngFor="let summary of summaries | orderComplete:'complete'">
+
+  <div *ngIf="!summary.order.pickupTimestamp" class="panel panel-success">
+    {{summary.order.pickupTimestamp}}
+  <div class="panel-heading">
+    <h3>Order of</h3>
+      <h3 *ngFor="let detail of summary.details">{{detail.orderDetail.quantity}} {{detail.menuItem.name}}</h3>
+      <h3>completed! Waiting for pickup. </h3>
+  </div>
+
+</div>
 </div>
