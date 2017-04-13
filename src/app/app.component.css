@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #2196f3
+}
+
+/*ul {
+  margin-left: 100px;
+}*/
+
+a {
+  color: #fff;
+}
+li {
+  display:inline;
+  padding-left: 10px;
+
+}
+ul {
+    padding-top: 11px;
+}
