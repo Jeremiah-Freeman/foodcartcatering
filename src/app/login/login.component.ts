@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
 
       switch(newUser.partnerType){
         case "c":
+console.log("signed new user");
           let newCustomer = new Customer;
           newCustomer.email = newUser.email;
           var promise = this.dataService.addCustomer(newCustomer);

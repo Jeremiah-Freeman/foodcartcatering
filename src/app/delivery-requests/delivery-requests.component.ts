@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class DeliveryRequestsComponent implements OnInit {
   public summaries = [];
-  public delivererID = '1';
+  public delivererID="1";
 
   constructor(
     private router: Router,
@@ -27,10 +27,9 @@ export class DeliveryRequestsComponent implements OnInit {
     this.route.params.forEach((urlParameters) => {
       this.delivererID = urlParameters['id'];
     });
-    // gets all foodCarts and then gets summaries for all foodCarts.
+
     this.dataService.getOrdersSummariesByUnassignedDeliverer2(this.summaries);
 
-    // this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartID);
   }
 
   acceptRequest(order) {

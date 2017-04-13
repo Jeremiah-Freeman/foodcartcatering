@@ -436,8 +436,8 @@ export class DataService {
       summaries[i].order.orderAcceptedTimestamp = this.tScrubber(summaries[i].order.orderAcceptedTimestamp);
       summaries[i].order.deliveryTimeEstimate = this.tScrubber(summaries[i].order.deliveryTimeEstimate);
       summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
-      summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
       summaries[i].order.deliveryTimestamp = this.tScrubber(summaries[i].order.deliveryTimestamp);
+      summaries[i].order.pickupTimestamp = this.tScrubber(summaries[i].order.pickupTimestamp);
 
 
       if (delivererID) {
