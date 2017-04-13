@@ -1,6 +1,5 @@
 <h1>Delivery Orders</h1>
 <div class="container">
-  <h4>{{today}}</h4>
   <div *ngFor="let summary of summaries" class="well">
     <div class="row">
       <div class="col-xs-6">
@@ -9,9 +8,12 @@
           <h4><strong>{{summary.foodCart.name}}</strong></h4>
           <ul>
             <li>address:<br> {{summary.foodCart.address}}</li>
+            <li>time: {{summary.order.orderReadyTime | date:'shortTime'}}</li>
+            <li>date: {{summary.order.orderReadyTime|date:'shortDate'}}</li>
           </ul>
           <button class="btn btn-success" (click)=
           "updatePickUpTime(summary.order)">Picked Up!</button>
+          <p>Pickup Time Stamp: {{summary.order.pickupTimestamp}}</p>
         </div>
       </div>
       <div class="col-xs-6">
@@ -21,6 +23,7 @@
             <ul>
               <li>address:<br> {{summary.customer.address}}</li>
               <li>time:<br> {{summary.order.requestedDeliveryTime | date:'shortTime'}}</li>
+              <li>date: {{summary.order.requestedDeliveryTime|date:'shortDate'}}</li>
               <li>price: ${{summary.revenue}}</li>
           </ul>
 

@@ -5,6 +5,7 @@ import { FoodCart } from '../food-cart.model';
 import { DataService } from '../data.service';
 import { FirebaseObjectObservable } from 'angularfire2';
 import { Router } from '@angular/router';
+import { Order } from '../order.model';
 
 @Component({
   selector: 'app-cart-overview',
@@ -25,11 +26,20 @@ export class CartOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
-      this.foodCartId = '0';
+      this.foodCartId = urlParameters['id'];
       this.dataService.getFoodCartById(this.foodCartId).subscribe((foodCart) => {
         this.foodCart = foodCart;
         this.dataService.getOrdersSummariesByFoodCartId2(this.summaries, this.foodCartId);
       });
+    });
+  }
+
+  orderCompleted(order: Order) {
+    console.log(order);
+    order.productionCompletionStatus = true;
+    const promise = this.dataService.updateOrder(order);
+    promise.then((success) => {
+      console.log('order ready')
     });
   }
 }

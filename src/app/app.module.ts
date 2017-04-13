@@ -41,6 +41,7 @@ import { AddDelivererComponent } from './add-deliverer/add-deliverer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { OrderSortPipe } from './order-sort.pipe';
+import { OrderCompletePipe } from './order-complete.pipe';
 
 
 
@@ -86,6 +87,7 @@ export const firebaseConfig = {
     AddDelivererComponent,
     AddCustomerComponent,
     OrderSortPipe,
+    OrderCompletePipe,
 
   ],
   imports: [
