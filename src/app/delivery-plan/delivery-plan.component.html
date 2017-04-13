@@ -1,28 +1,28 @@
 <h3>Delivery Plan</h3>
 
-
 <div id="map" class="col-sm-6">
   <sebm-google-map [latitude]="lat" [longitude]="lng">
-    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.foodCart.lat [longitude]=summary.foodCart.lon [label]="'P-'+summary.order.orderReadyTime|date:'shortTime'">
+    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.foodCart.lat [longitude]=summary.foodCart.lon [label]="'P'">
     </sebm-google-map-marker>
-    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.customer.lat [longitude]=summary.customer.lon [label]="'D-'+summary.order.requestedDeliveryTime|date:'shortTime'">
+    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.customer.lat [longitude]=summary.customer.lon [label]="'D'">
     </sebm-google-map-marker>
   </sebm-google-map>
 </div>
-
-
+<!-- summary.order.orderReadyTime|date:'shortTime' -->
+<!-- summary.order.requestedDeliveryTime|date:'shortTime' -->
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-6">
     <h5>PickUps</h5>
     <ul>
-      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/place/{{summary.foodCart.lat}},{{summary.foodCart.lon}}">{{summary.foodCart.name}} {{summary.order.orderReadyTime}}</a></li>
+      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/place/{{summary.foodCart.lat}},{{summary.foodCart.lon}}">{{summary.foodCart.name}}<br> {{summary.order.orderReadyTime}}</a></li>
     </ul>
   </div>
-  <div class="col-xs-8">
+  <div class="col-xs-6">
     <h5>Deliveries</h5>
     <ul>
-      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/dir/{{summary.foodCart.lat}},{{summary.foodCart.lon}}/{{summary.customer.lat}},{{summary.customer.lon}}">{{summary.customer.name}} {{summary.order.requestedDeliveryTime | date:'shortTime'}}</a></li>
+      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/dir/{{summary.foodCart.lat}},{{summary.foodCart.lon}}/{{summary.customer.lat}},{{summary.customer.lon}}">{{summary.customer.name}}<br>{{summary.order.requestedDeliveryTime}}</a></li>
     </ul>
   </div>
+  <!-- | date:'shortTime' -->
 </div>
 <app-delivery-navbar></app-delivery-navbar>
