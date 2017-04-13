@@ -22,7 +22,6 @@ export class AppComponent {
     this.authService.af.auth.subscribe(
       (auth) => {
         if (auth == null) {
-          console.log("Logged out");
           this.isLoggedIn = false;
           this.userDisplayName = '';
           this.userEmail = '';
@@ -57,8 +56,6 @@ export class AppComponent {
             }
           });
 
-          console.log(auth);
-          console.log("Logged in");
           // this.router.navigate(['']);
         }
       }
