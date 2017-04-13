@@ -415,11 +415,9 @@ export class DataService {
   summaryBuilder(summaries, orders) {
     // console.log(orders)
     // loop through each order
-    console.log(summaries.length);
 
 
     for (let i=0; i<orders.length; i++){
-      console.log(summaries.length);
 
       // then we push on to the first summary object the order itself, and create placehold array for the details relating to that order, and placeholder for revenue.
       summaries.push({order: orders[i], details: [], revenue: 0, customer: new Customer(), deliverer: new Deliverer(), foodCart: new FoodCart()});
@@ -438,8 +436,8 @@ export class DataService {
       summaries[i].order.orderAcceptedTimestamp = this.tScrubber(summaries[i].order.orderAcceptedTimestamp);
       summaries[i].order.deliveryTimeEstimate = this.tScrubber(summaries[i].order.deliveryTimeEstimate);
       summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
-      summaries[i].order.orderReadyTime = this.tScrubber(summaries[i].order.orderReadyTime);
       summaries[i].order.deliveryTimestamp = this.tScrubber(summaries[i].order.deliveryTimestamp);
+      summaries[i].order.pickupTimestamp = this.tScrubber(summaries[i].order.pickupTimestamp);
 
 
       if (delivererID) {

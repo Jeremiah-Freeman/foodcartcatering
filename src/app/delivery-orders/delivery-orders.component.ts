@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class DeliveryOrdersComponent implements OnInit {
   public summaries = []; //: FirebaseListObservable<any[]>;
-  public delivererID = '1';
+  public delivererID='1';
 
   constructor(
     private router: Router,
@@ -27,6 +27,7 @@ export class DeliveryOrdersComponent implements OnInit {
     this.route.params.forEach((urlParameters) => {
       this.delivererID = urlParameters['id'];
       this.dataService.getOrdersSummariesByDelivererId2(this.summaries, this.delivererID);
+      console.log(this.summaries);
     });
   }
 
