@@ -1,4 +1,38 @@
-# Foodcartcatering
+# Foodcartcatering.com
+
+A proof of concept for developing a web application to coordinate catering from food carts to office events.
+
+# Jay Freeman, Carlos Munoz Kampff, Clayton Collins, Benjamin T. Seaver, and David Quisenberry
+
+# Project description
+
+Three unique user stories:
+
+Office Event Coordinator | Preferred Viewport: Computer Monitor
+
+  - create an customer account
+  - login to their customer account
+  - view existing orders yet to be delivered
+  - choose from a list of food carts to place an order
+  - choose items for your order
+
+Food Cart Operator | Preferred Viewport: Tablet
+
+  - create a food cart account
+  - login to their food cart account
+  - add to and edit their online menu for ordering
+  - view existing orders needing to be cooked
+  - mark orders as complete
+  - view completed orders needing to be picked up
+
+Deliverer Contractor | Preferred Viewport: Mobile Phone
+
+  - create a deliverer account
+  - login to their deliverer account
+  - claim orders that need delivering
+  - view orders to be picked up from food carts and delivered based on time due.
+  - mark orders as picked up
+  - mark orders as delivered
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
@@ -29,12 +63,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## AngularMaps installation
 Epicodus-1A:foodcartcatering Guest$ npm install angular2-google-maps --save
-
-##NEEDLIST
-AppComponent nav bar that is sensitive to type of user.
-
-##Wishlist
-
-* Refactor user structure so that every email is associated with the foodcart/deliverer/customer it owns
-* Add specified index to all querys retrieving anything by email or other non id-constructed properties
-* integrate yelp API to show potential food cart providers  
