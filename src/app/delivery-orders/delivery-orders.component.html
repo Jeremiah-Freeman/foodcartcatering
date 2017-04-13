@@ -13,8 +13,10 @@
               <li>time: {{summary.order.orderReadyTime | date:'shortTime'}}</li>
               <li>date: {{summary.order.orderReadyTime|date:'shortDate'}}</li>
             </ul>
-            <button class="btn btn-success" (click)=
+            <div *ngIf="summary.order.productionCompletionStatus">
+            <button  *ngIf="!summary.order.pickupTimestamp" class="btn btn-success" (click)=
             "updatePickUpTime(summary.order)">Picked Up!</button>
+          </div>
             <p>Pickup Time Stamp: {{summary.order.pickupTimestamp}}</p>
           </div>
         </div>
@@ -29,7 +31,7 @@
               <li>price: ${{summary.revenue}}</li>
             </ul>
 
-            <button (click)="updateDeliveryTime(summary.order)" class="btn btn-success">Delivered!</button>
+            <button *ngIf='summary.order.pickupTimestamp' (click)="updateDeliveryTime(summary.order)" class="btn btn-success">Delivered!</button>
             <p>
               Delivery Time Stamp: {{summary.order.deliveryTimestamp}}
             </p>
