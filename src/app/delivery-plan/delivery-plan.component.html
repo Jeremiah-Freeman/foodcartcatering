@@ -3,18 +3,19 @@
 
 <div id="map" class="col-sm-6">
   <sebm-google-map [latitude]="lat" [longitude]="lng">
-    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.foodCart.lat [longitude]=summary.foodCart.lon [label]="'P'">
+    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.foodCart.lat [longitude]=summary.foodCart.lon [label]="'P-'+summary.order.orderReadyTime|date:'shortTime'">
     </sebm-google-map-marker>
-    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.customer.lat [longitude]=summary.customer.lon [label]="'D'">
+    <sebm-google-map-marker *ngFor="let summary of summaries" [latitude]=summary.customer.lat [longitude]=summary.customer.lon [label]="'D-'+summary.order.requestedDeliveryTime|date:'shortTime'">
     </sebm-google-map-marker>
   </sebm-google-map>
 </div>
+
 
 <div class="row">
   <div class="col-xs-4">
     <h5>PickUps</h5>
     <ul>
-      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/place/{{summary.foodCart.lat}},{{summary.foodCart.lon}}">{{summary.foodCart.name}}</a></li>
+      <li *ngFor="let summary of summaries"><a href="https://www.google.com/maps/place/{{summary.foodCart.lat}},{{summary.foodCart.lon}}">{{summary.foodCart.name}} {{summary.order.orderReadyTime}}</a></li>
     </ul>
   </div>
   <div class="col-xs-8">
