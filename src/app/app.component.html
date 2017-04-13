@@ -1,32 +1,39 @@
-<div class="container">
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    </div>
+
     <div class="container">
       <div *ngIf="isLoggedIn">
-        <button class="btn btn-default navbar-left" (click)='logOut()'>LogOut</button>
-        <p class="navbar-text navbar-left">Logged In: {{userDisplayName}} ({{userEmail}})<p>
+
+        <!-- <p class="navbar-text navbar-left">{{userDisplayName}} ({{userEmail}})<p> -->
       </div>
       <div *ngIf="!isLoggedIn">
-        <p class="navbar-text navbar-left">Logged Out</p>
+        <p class="navbar-text navbar-left"></p>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <div *ngIf="userType === 'f'">
-          <li><a routerLink='cart-overview/{{partnerID}}'>Home</a></li>
-          <li><a routerLink="edit-cart/{{partnerID}}">Edit Your Cart</a></li>
+          <li class="navText"><a routerLink="edit-cart/{{partnerID}}">edit</a></li>
+          <li class="navText"><a routerLink='cart-overview/{{partnerID}}'>home</a></li>
+          <li><a (click)='logOut()'>logout</a></li>
         </div>
         <div *ngIf="userType === 'c'">
-          <li><a routerLink='customer-overview/{{partnerID}}'>Home</a></li>
           <li><a routerLink="customer-edit/{{partnerID}}">Account</a></li>
+          <li><a routerLink='customer-overview/{{partnerID}}'>Home</a></li>
+          <li><a (click)='logOut()'>logout</a></li>
         </div>
         <div *ngIf="userType === 'd'">
+
           <li><a routerLink='delivery-overview/{{partnerID}}'>Home</a></li>
           <li><a routerLink="deliverer-edit/{{partnerID}}">Account</a></li>
           <li><a routerLink="delivery-overview/{{partnerID}}/orders">Orders</a></li>
           <li><a routerLink="delivery-overview/{{partnerID}}/plan">Plan</a></li>
           <li><a routerLink="delivery-overview/{{partnerID}}/requests">Requests</a></li>
+          <li><a (click)='logOut()'>logout</a></li>
         </div>
       </ul>
 
     </div>
-  </nav>
-  <router-outlet></router-outlet>
-</div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

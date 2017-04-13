@@ -4,32 +4,43 @@
     <button class="btn btn-default" (click)="loginWithGoogle()">Login With Google</button>
   </div>
 </div> -->
-<div class="container">
-  <div>
+
+
+
+<div class="row allforms">
+
+
+  <div class="well login col-md-6">
+    <div class="form-group">
+
     <form>
-    <h1>Login With Email</h1>
-    <label>email:</label>
-    <input #email value="">
-    <label>password:</label>
-    <input type="password" #password value="">
-    <button type="submit" class="btn btn-default" (click)="loginWithEmail(email.value, password.value)">Login with email</button>
+    <h2>login with email</h2>
+    <input placeholder=" email" class="form-control" #email value="">
+    <input placeholder=" password" class="form-control" type="password" #password value="">
+    <button type="submit" class="btn btn-info btn-sm" (click)="loginWithEmail(email.value, password.value)">login</button>
   </form>
   </div>
 </div>
-<div class="container">
-  <div>
+
+
+  <div  class="well signup col-md-6">
+    <div class="form-group">
+
     <form>
-    <h1>Sign up</h1>
-    <label>email:</label>
-    <input  #newEmail value="">
-    <label>password:</label>
-    <input type="password" #newPassword value="">
-    <select #newAccountType>
+    <h2 class="signup">sign up</h2>
+
+    <input class="form-control test" placeholder=" email" #newEmail value="">
+    <input class="form-control" placeholder=" pasword" type="password" #newPassword value="">
+<br>
+    <button type="submit" class="btn btn-info btn-sm" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">signup</button>
+    <select class="selectpicker" #newAccountType>
       <option value="c">Customer</option>
       <option value="f">Food Cart</option>
       <option value="d">Deliverer</option>
     </select>
-    <button type="submit" class="btn btn-default" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">Signup with email</button>
   </form>
-  </div>
+
+</div>
+</div>
+
 </div>
