@@ -2,6 +2,7 @@
   <div class="col-md-8">
     <div class="well">
       <select (change)="setCart($event.target.value)">
+      <option value="">Choose Cart</option>
       <option *ngFor="let cart of foodCarts | async" value={{cart.$key}}>{{cart.name}}</option>
       </select>
       <table class="table table-striped">
@@ -23,7 +24,7 @@
             <td>{{item.description}}</td>
             <td>${{item.price}}</td>
             <td>
-              <select>
+              <select (change)="setMenuItemQuantity(item, $event.target.value)">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -39,6 +40,17 @@
           </tr>
         </tbody>
       </table>
+
+      <label>Delivery Address:</label>
+      <br>
+      <textarea value="{{customer?.address}}" readonly rows= 4></textarea>
+      <br>
+      <label for="requestedDeliveryTime">Delivery Date and Time</label>
+      <input type="datetime-local" [(ngModel)]="order.requestedDeliveryTime">
+      <br>
+      <hr>
+      <input *ngIf='editValidationMessage' [(ngModel)]="editValidationMessage" disabled>
+      <br>
       <button (click)="placeOrder()" class="btn btn-success">Place Order</button>
 
 
@@ -56,7 +68,7 @@
         <h2>Notes: {{detail.orderDetail.notes}}</h2>
       </div>
     </div>
-    <p>
+    <!-- <p>
       history
     </p>
   </div>
@@ -67,4 +79,4 @@
       <button class="btn btn-success">Order From</button>
     </div>
   </div>
-</div>
+</div> -->
