@@ -20,10 +20,11 @@
     <div class="form-group">
 
     <form>
-    <h2>login with email</h2>
+    <h2>login</h2>
     <input placeholder=" email" class="form-control" #email value="">
     <input placeholder=" password" class="form-control" type="password" #password value="">
     <button type="submit" class="btn btn-info btn-sm" (click)="loginWithEmail(email.value, password.value)">login</button>
+    <a class="findAccountLink" routerLink="forgotPassword">Find my account</a>
   </form>
   </div>
 </div>
@@ -38,12 +39,20 @@
     <input class="form-control test" placeholder=" email" #newEmail value="">
     <input class="form-control" placeholder="password" type="password" #newPassword value="">
 <br>
-    <button type="submit" class="btn btn-info btn-sm" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">signup</button>
-    <select class="selectpicker" #newAccountType>
-      <option value="c">Customer</option>
-      <option value="f">Food Cart</option>
-      <option value="d">Deliverer</option>
-    </select>
+    <div class="testers">
+
+    <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+      <select #newAccountType id="accountType" class="mdl-selectfield__select">
+        <option value=""></option>
+        <option value="f">Food Cart</option>
+        <option value="c">Business</option>
+        <option value="d">Delivery driver / rider</option>
+      </select>
+      <div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+      <label class="mdl-selectfield__label" for="accountType">Account Type</label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-info btn-sm" (click)="signupWithEmail(newEmail.value, newPassword.value, newAccountType.value)">signup</button>
   </form>
 
 </div>
